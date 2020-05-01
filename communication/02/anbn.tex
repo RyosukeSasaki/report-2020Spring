@@ -1,0 +1,32 @@
+\documentclass[uplatex,11pt,fleqn]{jsarticle}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+\begin{document}
+
+\noindent
+\mbox{関数の平均より明らかに,}
+\[
+  a_0=\frac{1}{2}
+\]
+\mbox{また,}
+\[
+ b_n=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\cos(nx)dx=0
+\]
+\begin{align}
+ a_n=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\sin(nx)dx
+ &=\frac{1}{\pi} \left\{ \int_{-\pi}^0 0dx+\int_0^\pi \sin(nx)dx \right\} \nonumber \\
+ &=-\frac{1}{n\pi} \Bigl[cos(n\pi)-1\Bigr] \nonumber \\ 
+ &=\begin{dcases}
+   \frac{2}{n\pi} & (n:\mbox{odd}) \nonumber \\
+   0 & (n:\mbox{even})
+ \end{dcases}
+\end{align}
+\mbox{よって,自然数} $ k $ \mbox{を用いて}
+  \[
+f(x)=\frac{1}{2}+\sum_{k=1}^{\infty}\frac{2}{(2k-1)\pi}\sin((2k-1)\pi)
+\]
+\mbox{となる.}
+
+\end{document}

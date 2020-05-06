@@ -1,0 +1,140 @@
+\section{実験結果}
+\subsection{装置条件}
+装置条件は表\ref{tab:condition}の通りである.
+\begin{table}[h]
+  \caption{装置条件}
+  \label{tab:condition}
+  \centering
+  \begin{tabular}{lc}
+    \hline
+    項目 & 数値 \\
+    \hline \hline
+    固定相 & PEG1500 \\
+    キャリアーガス(He)流量 & 1.833 \si{\milli L.min^{-1}} \\
+    気化温度 & 150 \si{\degreeCelsius} \\
+    カラム温度 & 120 \si{\degreeCelsius} \\
+    検出器のブリッジ電流 & 100 \si{\milli\ampere} \\
+    \hline
+  \end{tabular}
+\end{table}
+\subsection{保持時間の測定}
+各物質の保持時間は表\ref{tab:time}の通りである.
+\begin{table}[h]
+   \caption{保持時間}
+   \label{tab:time}
+   \centering
+   \begin{tabular}{lc}
+     \hline
+     物質名 & 保持時間(\si{min}) \\
+     \hline \hline
+     エタノール & 1.178 \\
+     1-プロパノール & 1.554 \\
+     1-ブタノール & 2.351 \\
+     1-ペンタノール & 3.857 \\
+     \hline
+   \end{tabular}
+\end{table}
+\subsection{絶対検量線・補正係数の測定}
+\subsubsection{絶対検量線}
+混合既知試料①〜⑤について,2\si{\micro L}あたりの各物質の物質量を(\ref{equ:mol})式で計算した.
+\begin{equation}
+  \label{equ:mol}
+  物質量(\si{\mole})=体積(\si{\centi\metre^3})\times 容量比 \times \frac{密度(\si{\gram.\centi\meter^{-3}})}{分子量}
+\end{equation}
+各試料のクロマトグラムを作成し,保持時間から各ピークと物質を対応させ,物質ごとにピーク面積,物質量をプロットする.
+これが絶対検量線である.図\ref{fig:zettai.png}に絶対検量線を示す.
+\begin{table}[htpb]
+  \caption{物質量と面積}
+  \label{tab:mol_area}
+  \centering
+  \begin{tabular}{c||cccc|cccc}
+    \hline
+    \multirow{2}{*}{試料}&\multicolumn{4}{c|}{物質量($\times 10^{-6}$ \si{\mole})}&\multicolumn{4}{c}{平均ピーク面積($\times 10^5$ \si{\micro \volt.\second})} \\
+    &{\fontsize{6.5pt}{0pt}\selectfont エタノール}&{\fontsize{6.5pt}{0pt}\selectfont 1-プロパノール}&{\fontsize{6.5pt}{0pt}\selectfont 1-ブタノール}&{\fontsize{6.5pt}{0pt}\selectfont 1-ペンタノール}
+    &{\fontsize{6.5pt}{0pt}\selectfont エタノール}&{\fontsize{6.5pt}{0pt}\selectfont 1-プロパノール}&{\fontsize{6.5pt}{0pt}\selectfont 1-ブタノール}&{\fontsize{6.5pt}{0pt}\selectfont 1-ペンタノール}\\
+    \hline \hline
+    ① & 17.11 & 0.000 & 10.93 & 0.000 & 25.400 & 0.0000 & 22.013 & 0.0000 \\
+    ② & 0.000 & 13.39 & 0.000 & 9.229 & 0.0000 & 22.331 & 0.0000 & 20.058 \\
+    ③ & 3.423 & 2.679 & 8.745 & 7.383 & 2.9745 & 4.3249 & 17.223 & 16.533 \\
+    ④ & 13.69 & 10.72 & 2.186 & 1.846 & 20.858 & 19.434 & 4.2269 & 4.0926 \\
+    ⑤ & 8.557 & 6.697 & 5.466 & 4.615 & 11.195 & 11.134 & 10.567 & 10.658 \\
+    \hline
+  \end{tabular}
+\end{table}
+\mfig[width=15cm]{zettai.png}{絶対検量線}
+最小二乗法より,各物質に関する近似曲線は表\ref{tab:line}のようになった.
+\begin{table}[h]
+   \caption{近似曲線}
+   \label{tab:line}
+   \centering
+   \begin{tabular}{lc}
+     \hline
+     物質名 & 近似曲線 \\
+     \hline \hline
+     エタノール & $y=1.46\times10^{11} x$ \\
+     1-プロパノール & $y=1.71\times10^{11} x$ \\
+     1-ブタノール & $y=1.99\times10^{11} x$ \\
+     1-ペンタノール & $y=2.21\times10^{11} x$ \\
+     \hline
+   \end{tabular}
+\end{table}
+\subsubsection{補正係数}
+4.3.1の混合既知試料⑤の結果と(\ref{equ:Fi})式から各物質について補正係数を計算した.
+表\ref{tab:Fi}にこれを示す.
+\begin{table}[h]
+   \caption{補正係数}
+   \label{tab:Fi}
+   \centering
+   \begin{tabular}{lc}
+     \hline
+     物質名 & 補正係数 \\
+     \hline \hline
+     エタノール & $1.00$ \\
+     1-プロパノール & $7.87\times10^{-1}$ \\
+     1-ブタノール & $6.77\times10^{-1}$ \\
+     1-ペンタノール & $5.66\times10^{-1}$ \\
+     \hline
+   \end{tabular}
+\end{table}
+\subsection{未知試料の分析}
+\subsubsection{補正係数から算出}
+未知試料についてクロマトグラムを作成し,そのピーク面積,表\ref{tab:Fi}の補正係数と(\ref{equ:molper})式から組成モル比を算出した.
+表\ref{tab:miti_hosei}に結果を示す.
+\begin{table}[h]
+   \caption{未知試料の組成決定(補正係数から算出)}
+   \label{tab:miti_hosei}
+   \centering
+   \begin{tabular}{l|ccc}
+     \hline
+     物質名 & 保持時間(\si{min}) & 平均ピーク面積($\times10^5$ \si{\micro \volt.\second}) & 組成モル比(\%) \\ 
+     \hline \hline
+     エタノール & 1.283 & 14.94 & 42.1 \\
+     1-プロパノール & 1.649 & 13.38 & 29.7 \\
+     1-ブタノール & 2.345 & 8.077 & 15.4 \\
+     1-ペンタノール & 3.542 & 8.021 & 12.8 \\
+     \hline
+   \end{tabular}
+\end{table}
+\subsubsection{絶対検量線から算出}
+4.4.1のデータから表\ref{tab:line}の近似曲線を用いて物質量,組成モル比を算出した.
+表\ref{tab:miti_zettai}に結果を示す.
+\begin{table}[h]
+   \caption{未知試料の組成決定(絶対検量線から算出)}
+   \label{tab:miti_zettai}
+   \centering
+   \begin{tabular}{l|cc}
+     \hline
+     物質名 & 平均物質量($\times10^{-6}$ \si{\mole}) & 組成モル比(\%) \\
+     \hline \hline
+     エタノール & 10.2 & 39.6 \\
+     1-プロパノール & 7.79 & 30.4 \\
+     1-ブタノール & 4.07 & 15.8 \\
+     1-ペンタノール & 3.62 & 14.1 \\
+     \hline
+   \end{tabular}
+\end{table}
+\subsection{保持時間と炭素数・沸点の関係}
+図\ref{fig:num_c.png},図\ref{fig:hutten.png}に$\log {(保持時間)}$と炭素数,沸点の関係を示す.
+\mfig[width=15cm]{num_c.png}{$\log {(保持時間)}$と炭素数の関係}
+\mfig[width=15cm]{hutten.png}{$\log {(保持時間)}$と沸点の関係}
+これらの関係には線形関係が見られる.

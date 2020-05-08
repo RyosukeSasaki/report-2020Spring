@@ -1,5 +1,10 @@
 \section{実験結果}
 \subsection{装置条件}
+(\ref{equ:Lmin})式よりキャリアガス流量$F\ [\si{\milli L.min^{-1}}]$を計算する.
+\begin{equation}
+  \label{equ:Lmin}
+  F=\frac{5\ \si{\milli L}}{\cfrac{16.37}{60}\ \si{min}}
+\end{equation}
 装置条件は表\ref{tab:condition}の通りである.
 \begin{table}[h]
   \caption{装置条件}
@@ -10,7 +15,7 @@
     項目 & 数値 \\
     \hline \hline
     固定相 & PEG1500 \\
-    キャリアーガス(He)流量 & 1.833 \si{\milli L.min^{-1}} \\
+    キャリアーガス(He)流量 & 18.33 \si{\milli L.min^{-1}} \\
     気化温度 & 150 \si{\degreeCelsius} \\
     カラム温度 & 120 \si{\degreeCelsius} \\
     検出器のブリッジ電流 & 100 \si{\milli\ampere} \\
@@ -36,10 +41,10 @@
 \end{table}
 \subsection{絶対検量線・補正係数の測定}
 \subsubsection{絶対検量線}
-混合既知試料①〜⑤について,2\si{\micro L}あたりの各物質の物質量を(\ref{equ:mol})式で計算した.
+混合既知試料①〜⑤について,2\ \si{\micro L}あたりの各物質の物質量を(\ref{equ:mol})式で計算した.
 \begin{equation}
   \label{equ:mol}
-  物質量(\si{\mole})=体積(\si{\centi\metre^3})\times 容量比 \times \frac{密度(\si{\gram.\centi\meter^{-3}})}{分子量}
+  物質量[\si{\mole}]=体積[\si{\centi\metre^3}]\times 容量比 \times \frac{密度[\si{\gram.\centi\meter^{-3}}]}{分子量}
 \end{equation}
 各試料のクロマトグラムを作成し,保持時間から各ピークと物質を対応させ,物質ごとにピーク面積,物質量をプロットする.
 これが絶対検量線である.図\ref{fig:zettai.png}に絶対検量線を示す.

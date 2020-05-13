@@ -1,0 +1,57 @@
+\section{実験結果}
+\subsection{実験3の結果}
+図\ref{fig:ensan_tekitei.png}の滴定曲線より読み取った中和当量は11.00 \si{\milli L}, pHは6.80だった.塩酸標準溶液のファクターが1.003なので,NaOH試薬のファクター$f_{NaOH}$は以下の式で求まる.
+\begin{align*}
+  f_{NaOH}&=\cfrac{0.1\times 10.0\times 1.003}{0.1\times 11.0}\\
+  &=9.12\times10^{-1}
+\end{align*}
+一方で図\ref{fig:ensan_sisa.png}の示差曲線より読み取った中和当量は10.03 \si{\milli L}, このときのpHは4.90だった.よって$f_{NaOH}=1.00$だった.
+\begin{table}[h]
+   \caption{実験3の結果}
+   \label{tab:jikken3kekka}
+   \centering
+   \begin{tabular}{lc}
+     \hline
+     &$f_{NaOH}$\\
+     \hline \hline
+     滴定曲線&$9.12\times10^{-1}$\\
+     示差曲線&$1.00$\\
+     \hline
+   \end{tabular}
+\end{table}\\
+\subsection{実験4の結果}
+ここでは$f_{NaOH}$は滴定曲線から算出したものを用いる.滴定曲線より読み取った中和当量$v_e$は10.39 \si{\milli L}であり, $v_e$でのpHは8.10, 
+$\cfrac{v_e}{2}$でのpHは4.53だった.このことから,$K_A$は以下の式で求まる.
+\begin{align*}
+  K_A&=10^{-pK_A}\\
+  &=10^{-4.53}\\
+  &=2.95\times10^{-5}
+\end{align*}
+また,最初に用意されていた酢酸の正確な濃度$C_{酢酸}$は以下の式で求まる.
+\begin{align*}
+  C_{酢酸}&=\cfrac{0.1\times f_{NaOH}\times 10.39}{20.0}\times20\\
+  &=0.947M
+\end{align*}
+一方で示差曲線より読み取った中和当量$v_e$は10.43 \si{\milli L}であり, $v_e$でのpHは8.13, 
+$\cfrac{v_e}{2}$でのpHは4.54だった.故にこの場合の結果は以下のとおりである.
+\begin{align*}
+  K_A&=2.88\times10^{-5}\\
+  C_{酢酸}&=0.951M
+\end{align*}
+\begin{table}[h]
+   \caption{実験4の結果}
+   \label{tab:jikken4kekka}
+   \centering
+   \begin{tabular}{lcc}
+     \hline
+     &$K_A$&$C_{酢酸}$ / M\\
+     \hline \hline
+     滴定曲線&$2.95\times10^{-5}$&$0.947$\\
+     示差曲線&$2.88\times10^{-5}$&$0.951$\\
+     \hline
+   \end{tabular}
+\end{table}
+\mfig[width=12cm]{ensan_tekitei.png}{$HCl$の$NaOH$による滴定曲線}
+\mfig[width=12cm]{ensan_sisa.png}{$HCl$の$NaOHに$よる滴定の示差曲線}
+\mfig[width=12cm]{sakusan_tekitei.png}{$CH_3COOH$の$NaOH$による滴定曲線}
+\mfig[width=12cm]{sakusan_sisa.png}{$CH_3COOH$の$NaOH$による滴定の示差曲線}

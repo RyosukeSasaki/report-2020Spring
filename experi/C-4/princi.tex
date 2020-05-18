@@ -1,0 +1,42 @@
+\section{実験原理}
+\subsection{金属電極の電位とNernstの式}
+金属電極$M$及びそのイオン$M^{n+}$が溶解した水溶液は$M^{n+}+ne^{-} \rightleftharpoons M$の酸化還元平衡にあり,
+電極Mの電極電位$\phi_M$はNernstの式(Nernst's eq.)で与えられる.
+\begin{equation}
+  \label{equ:nernst}
+  \phi_M = E^{\circ}_{M^{n+}/M} + \tfrac{RT}{nF} \ln a_{M^{n+}}
+\end{equation}
+ただし$R$, $T$, $F$は気体定数,温度,ファラデー定数である.また$E^{\circ}_{M^{n+}/M}$を標準電極電位と呼び,水溶液中では専ら水素-水素イオンの標準電極電位を基準とする.
+また$a_{M^{n+}}$を活量と呼び,次式で与えられる.
+\begin{equation}
+  \label{equ:katuryo}
+  a_{M^{n+}}=\tfrac{\gamma_{M^{n+}}c_{M^{n+}}}{c_0}
+\end{equation}
+ここで$\gamma_{M^{n+}}$を活量係数と呼び,溶液中の全イオン濃度に依存する.また$c_{M^{n+}}$, $c_0$はそれぞれ$M^{n+}$のモル濃度,基準モル濃度(1 \si{\mole.L^{-1}})である.
+\subsection{Daniell電池}
+Daniell電池は(\ref{equ:daniell})式の電池式で表される.
+\begin{equation}
+  \label{equ:daniell}
+  Zn\,|\,ZnSO_4\,||\,CuSO_4\,|\,Cu
+\end{equation}
+Nernst's eq.よりDaniell電池の可逆起電力$E_D$は以下の式で与えられる.
+\begin{equation}
+  \label{equ:ED}
+  E_D=\phi_{Cu} - \phi_{Zn}=E^{\circ}_{Cu^{2+}/Cu}-E^{\circ}_{Zn^{2+}/Zn}+\tfrac{RT}{2F} \ln \tfrac{a_{Cu^{n+}}}{a_{Zn^{n+}}}
+\end{equation}
+このことから平衡状態での$Cu^{2+}$, $Zn^{2+}$の活量を$a_{Cu_{2+}^{eq}}$, $a_{Zn_{2+}^{eq}}$とし,特に活量係数,イオン濃度が等しい場合,平衡定数$K_D$は以下の式で与えられる.
+\begin{equation}
+  \label{equ:K_D}
+  \ln K_D=\ln \tfrac{a_{Zn_{2+}^{eq}}}{a_{Cu_{2+}^{eq}}}=\tfrac{2F}{RT} (E^{\circ}_{Cu^{2+}/Cu} - E^{\circ}_{Zn^{2+}/Zn})=\tfrac{2F}{RT} E_D
+\end{equation}
+\subsection{濃淡電池}
+濃淡電池は水溶液のモル濃度によって活量が異なることから起電力を得る.ここでイオン濃度$c_1$, $c_2$, 活量$a_1$, $a_2$の$Cu^{2+}$水溶液から成る以下の電池を考える.
+\begin{equation}
+  \label{equ:noutandenti}
+  Cu\,|\,CuSO_4(a_1)\,||\,CuSO_4(a_2)\,|\,Cu
+\end{equation}
+Nernstの式より活量係数が等しい場合,この電池の起電力$E_C$は以下の式で与えられる.
+\begin{equation}
+  \label{equ:noutan}
+  E_C=\tfrac{RT}{2F} \ln \tfrac{a_2}{a_1} = \tfrac{RT}{2F} \ln \tfrac{c_2}{c_1}
+\end{equation}

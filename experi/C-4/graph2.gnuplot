@@ -34,6 +34,6 @@ j(x)=12.71*x+log(sqrt(g(c2(x))/g(0.1)))
 #set arrow 2 from 0.025,ymin to 0.025,g(0.025) arrowstyle 1
 #set arrow 3 from 0.2,ymin to 0.2,g(0.2) arrowstyle 1
 
-plot "data.dat" using 2:1 title "実験値" pt 4, i(x) title "理論曲線",j(x) title "(13)式"
+plot "data.dat" using 2:1 title "実験値" pt 4, i(x) title "(13)式",j(x) title "理論曲線"
 
 reset

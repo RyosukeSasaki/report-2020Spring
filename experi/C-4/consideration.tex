@@ -115,7 +115,7 @@ $m$, $M_r$はそれぞれ電解質の質量モル濃度,分子量であり, $d_0
   \label{equ:E_Ckaturyo}
   E_C=\cfrac{RT}{2F}\ln \cfrac{c_2}{c_1} + \cfrac{RT}{2F}\ln \cfrac{\gamma_{2+}}{\gamma_{1+}}
 \end{equation}
-起電力を求める場合,アニオンの活力係数$\gamma_+$が必要だが,これを測定,または計算することは出来ない.
+起電力を求める場合,アニオンの活力係数$\gamma_+$が必要だが,これを測定,または計算することは出来ない\cite{kakiuchi2016}.
 しかし濃淡電池の実験では,アニオンとカチオンは同種のものが同じ比率で存在しているので, $\gamma_{+}$と$\gamma_{-}$の比が一定であると仮定する.
 この仮定の元で(\ref{equ:E_Ckaturyo})式は以下のように書き換えられる.
 \begin{equation}
@@ -127,7 +127,7 @@ $m$, $M_r$はそれぞれ電解質の質量モル濃度,分子量であり, $d_0
 \mfig[width=15cm]{graph2.eps}{実験値と理論曲線, (\ref{equ:riron1})式の比較}
 図\ref{fig:graph2.eps}のように,活量係数を考慮した場合,理論曲線と実験値は非常によく一致している.
 以上より,この実験では活量係数の寄与が有意に現れており,テキスト(18)式において活量をモル濃度で代用したのは全く不適切であったと考えられる.
-同時に, Nernstの式は正しいと言える.
+同時に, Nernstの式,及びDebye-H\"{u}ckelの式は正しいと言える.
 %$\gamma_{2\pm}$の範囲と$\gamma_{1\pm}$の値から活量係数の寄与は
 %\begin{equation}
 %  \label{equ:hanni}
@@ -154,10 +154,12 @@ $m$, $M_r$はそれぞれ電解質の質量モル濃度,分子量であり, $d_0
 %このことから,実験に用いたDMTでは活量係数の寄与を検出できており,テキスト(18)式において活量をモル濃度で代用したことは実際には不適切であったと考えられる.
 
 一方, Daniell電池の実験においては陽極側と負極側でアニオンが別種だが、亜鉛と銅の原子量が近く,電荷が等しいため同様の仮定を用いてみる.
+このとき活量係数の寄与は
 \begin{equation*}
   \cfrac{RT}{2F} \ln \sqrt{\cfrac{\gamma_{Cu^{2+}}}{\gamma_{Zn^{2+}}}}=\cfrac{RT}{2F} \ln \sqrt{\cfrac{0.4074}{0.4071}}=4.68\times10^{-6}\ \si{\volt}
 \end{equation*}
-である.相対誤差は$4.2\times10^{-4}\ \%$程度であり,十分に無視できると考えられる.
+である.
+相対誤差は$4.2\times10^{-4}\ \%$程度であり,十分に無視できると考えられる.
 またDaniell電池の起電力は濃淡電池に比べて大きく,活量係数の寄与の割合も小さくなる.
 \subsection{課題}
 \subsubsection{Daniell電池の起電力の温度依存性}
@@ -216,10 +218,11 @@ ZnとAgの標準電極電位$\phi_{Zn}$, $\phi_{Ag}$は
 \end{align}
 である.ここで起電力$E_D$は
 \begin{align}
+  \label{equ:AgZn}
   E_D&=\phi_{Ag}-\phi_{Zn}=E^{\circ}_{Ag^{+}/Ag}-E^{\circ}_{Zn^{2+}/Zn}+\cfrac{RT}{2F} \ln \cfrac{(a_{Ag^+})^2}{a_{Zn^{2+}}}
 \end{align}
 ZnとAgの標準電極電位はそれぞれ-0.763 \si{\volt}, +0.799 \si{\volt}である.
-活量が1だから起電力,平衡定数,標準生成Gibbs energyは(\ref{equ:ED})式, (\ref{equ:K_D})式, (\ref{equ:gibbs})式及び平衡の式から
+活量が1だから起電力,平衡定数,標準生成Gibbs energyは(\ref{equ:ED})式, (\ref{equ:K_D})式, (\ref{equ:gibbs})式及び(\ref{equ:AgZn})式から
 \begin{align*}
   E_D&=0.799-(-0.763)=1.56\ \si{\volt}\\
   K_D&=\exp(\cfrac{2F}{RT}E_D)=6.81\times10^{52}\ \si{L.\mole^{-1}}\\

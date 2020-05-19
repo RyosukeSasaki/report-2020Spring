@@ -36,28 +36,31 @@ Daniell電池の平衡は以下のようになる.
 \end{equation}
 平衡定数が非常に大きいことから平衡は大きく右に偏ることがわかる.またGibbs energyはある系から取り出せる仕事の最大値である\cite{kagakunetu}.
 故にDaniell電池は理想的には$1\ \si{\mole}$あたり$2.13\times10^5\ \si{\joule}$の仕事をしうる.
-しかし実際には内部抵抗などによる損失があり,$100\ \%$の仕事を取り出すことはできない.
+しかし実際には内部抵抗などによる損失があり, $100\ \%$の仕事を取り出すことはできない.
 
 また,平衡定数が文献値と実験値で大きな差が出たのに対し, Gibbs energyはよく一致しており,温度依存が少ない,あるいは無いと考えられる.
 \subsection{Nernstの式の確認}
+\label{sec:Nernst}
 図\ref{fig:graph.png}に濃淡電池のモル濃度比の自然対数と起電力の関係を示す.
 \mfig[width=9cm]{graph.png}{濃淡電池のモル濃度比の自然対数と起電力の関係}
 最小二乗法より,実験値の近似曲線は$y=12.583x-0.91510$の直線である.一方で理論曲線は(\ref{equ:noutan})式
-に縦軸の単位が[$\si{\milli\volt}$]であることに注意して値を代入し$y=12.711x$とした.
+に縦軸の単位が$\si{\milli\volt}$であることに注意して値を代入し$y=12.711x$とした.
 定常的なバイアスを除いた場合,実験結果はNernstの式とよく一致するため, Nernstの式は正しいと考えられる.
 
-しかし,傾きは相対誤差$1.0\ \%$程度で近い値を持っているのに対し,切片では定常的な誤差が生じている.ここで$E_C$の表式を改めて示す.
+傾きは相対誤差$1.0\ \%$程度で近い値を持っているのに対し,切片では定常的な誤差が生じている.ここで$E_C$の表式を改めて示す.
 \begin{equation}
   \label{equ:E_C}
   E_C=\phi_2-\phi_1=E^{\circ}_{Cu^{2+}/Cu}-E^{\circ}_{Cu^{2+}/Cu}+\cfrac{RT}{2F}\ln \cfrac{a_2}{a_1}
 \end{equation}
 (\ref{equ:E_C})式から明らかなように,切片は$E^{\circ}_{Cu^{2+}/Cu}-E^{\circ}_{Cu^{2+}/Cu}=0$であり,本質的に切片は0である.
-また,すべてのデータにおいて定常的に$-0.9\ \si{\milli\volt}$程度の負のバイアスを持っていることから,これは実験装置に由来する誤差であると考える.
-ここで,電極は実験毎に研磨されており,組成が異ならない限り定常的なバイアスが乗る原因になるとは考えにくい.
-また,電池に用いた溶液は0.2Mと0.15Mの2種類の標準溶液から調製されており,また希釈の度合いも異なるためこれが原因であるとは考えにくい.
-また,銅線,その他の電気回路での電圧降下の場合,起電力が異なれば電流も異なるため一定のバイアスが乗ることを説明できない.
-一方で, DMTは校正されており,また$0.001\ \si{\milli\volt}$もの正確さを持っていることから$0.9\ \si{\milli\volt}$ものバイアスが乗るとは考えにくが,
-この実験装置の構成ではほかに定常的なバイアスが乗る要素は無いため, DMTに原因があると考えざる負えない.
+以下のことからこの誤差の原因は実験装置ではない.
+\begin{itemize}
+  \item 電極は実験毎に研磨されており,組成が異ならない限り定常的なバイアスが乗る原因にはなりえない.
+  \item 電池に用いた溶液は0.2Mと0.15Mの2種類の標準溶液から調製されており,希釈の度合いも異なるため原因にはなりえない.
+  \item 電気回路での電圧降下の場合,起電力が異なれば電流も異なるため一定のバイアスが乗ることを説明できない.またDMTを流れる電流は極めて小さいはずである.
+  \item DMTは校正されており,更に$0.001\ \si{\milli\volt}$もの正確さを持っていることから$0.9\ \si{\milli\volt}$ものバイアスが乗るとは考えにくい.
+\end{itemize}
+以上を踏まえてこの定常的な誤差の原因は活量係数にあると考える.詳細な議論は\S\ref{sec:katuryo}にて行う.
 \subsection{銅電極表面の変化}
 電流が流れていないこと,正極,負極双方で金属光沢が失われていた事から,これが電極反応のみによるものでないのは明らかである.
 各セルには$SO_4^{2-}$, $OH^{-}$などの陰イオンが存在する.これらの化合物,水酸化銅(II)や硫酸銅は青色である.
@@ -78,19 +81,20 @@ Daniell電池の平衡は以下のようになる.
 このように局部電池で発生した原子状の酸素が銅と反応したことで酸化銅(II)が生じたことが考えられる.
 また,亜鉛電極についても無色の$ZnO$が発生したと考えれば結果と一致する.
 \subsection{活量係数について}
-活量係数$y_{\pm}$はDebye-H\"{u}ckelの式によって以下のように与えられる\cite{kiso}.
+\label{sec:katuryo}
+活量係数$\gamma_{\pm}$はDebye-H\"{u}ckelの式によって以下のように与えられる\cite{kiso}.
 \begin{align}
   \label{debye}
   \gamma_{\pm}=(1+0.001mM_r)\cfrac{d_0}{d}y_{\pm}\\
-  y{\pm}=\exp(\cfrac{-|z_1z_2|A_{\gamma}\sqrt{I_m}}{1+a^{\circ}B_{\gamma}\sqrt{I_m}})\\
+  y_{\pm}=\exp(\cfrac{-|z_1z_2|A_{\gamma}\sqrt{I_m}}{1+a^{\circ}B_{\gamma}\sqrt{I_m}})\\
   I_m=\cfrac{1}{2}\sum m_iz_i^2
 \end{align}
-ここで$A_{\gamma}$, $B_{\gamma}$は溶媒に対する定数で,それぞれ$0.5101$, $0.3285$である.
+ここで$A_{\gamma}$, $B_{\gamma}$は溶媒に対する定数で,水においてはそれぞれ$0.5101$, $0.3285$である.
 $m$, $M_r$はそれぞれ電解質の質量モル濃度,分子量であり, $d_0$, $d$はそれぞれ純溶媒と溶液の密度である.
 また,$a^{\circ}$は陽イオンと陰イオンの最近接距離 [cm]であり, $m_i$, $z_i$はそれぞれ溶液中に存在する各イオンの質量モル濃度,電荷である.
-ここでは$0.1M\ CuSO_4$, $0.5M\ Na_2SO_4$について計算してみる.ただし仮に$a_{\circ}=10^{-6}$, $\tfrac{d_0}{d}=1$と置いている.また,水は溶質を溶かす過程で体積は変化していないものとする.
+ここでは$0.1M\ CuSO_4$, $0.5M\ Na_2SO_4$について計算してみる.ただし仮に$a_{\circ}=10^{-6}$, $\tfrac{d_0}{d}=0.8$と置いている.また,水は溶質を溶かしても体積は変化していないものとする.
 \begin{align*}
-  I_m&=\cfrac{1}{2}\left(\cfrac{0.1\cdot\left(64+96\right)\cdot0.1\cdot2^2+1.0\cdot23\cdot0.1\cdot1^2+0.5\cdot96\cdot0.1\cdot2^2}{0.1+0.1\cdot160\cdot0.1+0.5\cdot142\cdot0.1}\right)\\
+  I_m&=\cfrac{1}{2}\left(\cfrac{0.1\cdot\left(64+96\right)\cdot0.1\cdot2^2+1.0\cdot23\cdot0.1\cdot1^2+0.5\cdot96\cdot0.1\cdot2^2}{100+0.1\cdot160\cdot0.1+0.5\cdot142\cdot0.1}\right)\\
   &=0.1283
 \end{align*}
 \begin{align*}
@@ -98,24 +102,49 @@ $m$, $M_r$はそれぞれ電解質の質量モル濃度,分子量であり, $d_0
   &=0.4814
 \end{align*}
 \begin{align*}
-  \gamma_{Cu^{2+}}&=\left(1+0.001\cdot160\cfrac{0.1\cdot160\cdot0.1}{0.1+0.1\cdot160\cdot0.1+0.5\cdot142\cdot0.1}\right)\cdot1\cdot\gamma_{Cu^{2+}}\\
+  \gamma_{Cu^{2+}}&=\left(1+0.001\cdot160\cfrac{0.1\cdot160\cdot0.1}{100+0.1\cdot160\cdot0.1+0.5\cdot142\cdot0.1}\right)\cdot0.8\cdot\gamma_{Cu^{2+}}\\
   &=0.386
 \end{align*}
-このように活量係数を計算できた.図\ref{fig:Slide1.jpg}に各$CuSO_4$濃度における活量係数のグラフを示した.
-\mfig[width=12cm]{Slide1.jpg}{$CuSO_4濃度と活量係数の関係$}
-濃淡電池の実験では0.025M, 0.05M, 0.15M, 0.2M $CuSO_4$溶液を用いたので図\ref{fig:Slide1.jpg}より,活量係数$\gamma_2$は0.4101から0.3595の間になる.
-ここで$E_C$の表式を活量係数を省略せずに表すと,
+このように活量係数を計算できた.図\ref{fig:graph.eps}に各$CuSO_4$濃度における活量係数のグラフを示した.
+\mfig[width=15cm]{graph.eps}{$CuSO_4濃度と活量係数の関係$}
+濃淡電池の実験では0.025M, 0.05M, 0.15M, 0.2M $CuSO_4$溶液を用いたので図\ref{fig:graph.eps}より,活量係数$\gamma_2$は0.4101から0.3595の間になる.
+ここで$E_C$の表式を活量係数を省略せずに表すと(\ref{equ:E_Ckaturyo})式のようになる.
 \begin{equation}
   \label{equ:E_Ckaturyo}
   E_C=\cfrac{RT}{2F}\ln \cfrac{c_2}{c_1} + \cfrac{RT}{2F}\ln \cfrac{\gamma_2}{\gamma_1}
 \end{equation}
-故に$E_C$に対する活量係数の寄与は$\cfrac{RT}{2F}\ln \cfrac{\gamma_2}{\gamma_1}$となる.$\gamma_2$の範囲と$\gamma_1$の値から
-\begin{equation*}
-  9.07\times10^{-4} \leq \cfrac{RT}{2F}\ln \cfrac{\gamma_2}{\gamma_1} \leq 7.67\times10^{-4}
-\end{equation*}
-となる.よってテキスト(18)式において活量係数の寄与は十分小さく,無視できる.
+故に$E_C$に対する活量係数の寄与は$\cfrac{RT}{2F}\ln \cfrac{\gamma_2}{\gamma_1}$となる. $\gamma_2$の範囲と$\gamma_1$の値から活量係数の寄与は
+\begin{equation}
+  \label{equ:hanni}
+  7.67\times10^{-4} \leq \cfrac{RT}{2F}\ln \cfrac{\gamma_2}{\gamma_1} \leq 9.04\times10^{-4}
+\end{equation}
+となる. \S\ref{sec:Nernst}で求めた近似式を用いると,実験値と理想値の誤差は各点において表\ref{tab:gosa}のようになる.
+\newpage
+\begin{table}[h]
+   \caption{各点における理想値と近似値の誤差}
+   \label{tab:gosa}
+   \centering
+   \begin{tabular}{c|c}
+     \hline
+     $\ln \frac{c_2}{c_1}$&誤差 / \si{\volt}\\
+     \hline \hline
+     $-1.386$&$7.274\times10^{-4}$\\
+     $-0.6931$&$8.537\times10^{-4}$\\
+     $0.4055$&$9.127\times10^{-4}$\\
+     $0.6931$&$1.041\times10^{-3}$\\
+     \hline
+   \end{tabular}
+\end{table}
+この結果は(\ref{equ:hanni})の範囲とよく一致しており,定常的な誤差が活量係数に起因するものであるとわかる.
+このことから,実験に用いたDMTでは活量係数の寄与を検出できており,テキスト(18)式において活量をモル濃度で代用したことは実際には不適切であったと考えられる.
 
-また,Daniell電池の実験において$\gamma_{Cu^{2+}}=0.3595$, $\gamma_{Zn^{2+}}=0.3591$であり,この寄与もまた十分小さいのでテキスト(9)式, (14)式でもこれを無視できる.
+一方, Daniell電池の実験において$\gamma_{Cu^{2+}}=0.3595$, $\gamma_{Zn^{2+}}=0.3591$なので,
+\begin{equation*}
+  \cfrac{RT}{2F} \ln \cfrac{\gamma_Cu^{2+}}{\gamma_Zn^{2+}}=1.415\times10^{-5}
+\end{equation*}
+である.相対誤差は$1.2\times10^{-3}\ \%$程度であり,十分に無視できると考えられる.
+$Cu$と$Zn$は原子量が近く,またイオンの電荷,モル濃度も等しいため活量係数も近い値になる.
+またDaniell電池の起電力は濃淡電池に比べて大きく,活量係数の寄与の割合も小さくなる.
 
 \subsection{課題}
 \subsubsection{Daniell電池の起電力の温度依存性}

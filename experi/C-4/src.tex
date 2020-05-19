@@ -1,0 +1,38 @@
+\begin{lstlisting}[caption=graph2.gnuplot]
+ymin=-19
+ymax=9
+c1=0.1
+
+#set terminal wxt
+set terminal postscript eps enhanced color "GothicBBB-Medium-UniJIS-UTF8-H"
+set output "graph2.eps"
+
+set yrange [ymin:ymax]
+set xrange [-2:1]
+set size square
+set xlabel "ln(c_2/c_1)   /"
+set ylabel "起電力   /   mV"
+set key box lt 0
+set key left top
+
+Im(x) = (x*64*0.1*4 + x*96*0.1*4 + 1.0*23*0.1 + 0.5*96*0.1*4)/(100 + x*160*0.1 + 0.5*142*0.1)/2
+y(x) = exp(-(4*0.5101*sqrt(Im(x)))/(1+10**(-6)*0.3285*sqrt(Im(x))))
+d(x) = 1000/(1000+x*160+0.5*142) #d0/d
+
+#γ
+g(x) = d(x)*(1+0.001*160*(x*160*0.1)/(100+x*160*0.1+0.5*142*0.1))*y(x)
+
+#(13)式
+i(x) = 12.71*x
+
+#x軸(ln(c2/c1))とc2の変換
+c2(x) = 10*exp(x) 
+
+#理論曲線
+r(x)=12.71*x+log(sqrt(g(c2(x))/g(0.1))) 
+
+plot "data.dat" using 2:1 title "実験値" pt 4, i(x) title "(13)式",r(x) title "理論曲線"
+
+reset
+\end{lstlisting}
+gnuplot version 5.2 patchlevel 8 On Ubuntu 20.04

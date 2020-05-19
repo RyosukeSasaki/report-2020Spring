@@ -14,6 +14,7 @@
 \usepackage{titlesec}
 
 \usepackage{multirow}
+\usepackage{listings,jlisting}
 
 \titleformat*{\section}{\normalsize\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
@@ -28,6 +29,24 @@
 \end{center}
 }
 
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  %numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=0zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
 
 \begin{document}
 
@@ -39,6 +58,9 @@
 \input{conclusion.tex}
 
 
-
 \bibliography{ref.bib}
+\newpage
+\input{src.tex}
+\newpage
+\input{data.tex}
 \end{document}

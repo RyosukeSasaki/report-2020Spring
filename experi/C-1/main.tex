@@ -1,0 +1,42 @@
+\documentclass[uplatex,a4j,11pt]{jsarticle}
+
+
+\renewcommand{\thesection}{\arabic{section}.}
+\bibliographystyle{jplain}
+
+\usepackage{multirow}
+
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{siunitx}
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+    \includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+
+%\usepackage{titlesec}
+%\titleformat*{\section}{\normalsize\bfseries}
+%\titleformat*{\subsection}{\normalsize\bfseries}
+
+
+\begin{document}
+
+\input{goal.tex}
+\input{princi.tex}
+\input{method.tex}
+\input{res.tex}
+\input{consideration.tex}
+\input{conclusion.tex}
+\input{question.tex}
+
+\bibliography{ref.bib}
+\end{document}

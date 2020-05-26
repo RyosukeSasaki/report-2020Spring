@@ -1,0 +1,81 @@
+\section{課題}
+\subsection{}
+\subsubsection*{(1)}
+透過率Tを用いた時,吸光度は以下の式で与えられる.
+\begin{align}
+  \label{equ:kyukoT}
+  吸光度=\log\cfrac{1}{\cfrac{\rm 透過率T}{100}}
+\end{align}
+図\ref{fig:asset/graph3.png}に物質Xの検量線を示す.
+\mfig[width=12cm]{asset/graph3.png}{物質Xの検量線}
+最小二乗法から最尤曲線は以下の式で与えられる.
+\begin{align}
+  \label{equ:kadai_saiyu}
+  y=0.1759x
+\end{align}
+\subsubsection*{(2)}
+(\ref{equ:kadai_saiyu})式から試料Z中のXの濃度は4.50 \si{\gram.L^{-1}}である.故に試料Z 500 \si{\milli L}中には
+Xが2.25 \si{\gram}含まれている.
+\subsubsection*{(3)}
+透過率の真値を$\overline{x}$,誤差を$\sigma_x$とする.このとき吸光度の誤差$\sigma_A$は
+\begin{align}
+  \label{equ:Agosa}
+  \sigma_{A\pm}&=\log\cfrac{100}{\overline{x}\mp\sigma_x}-\log\cfrac{100}{\overline{x}}  \\
+  &=\log\cfrac{\overline{x}}{\overline{{x}}\mp\sigma_x}
+\end{align}
+よって,誤差の絶対値$|\sigma_x|$が一定であるならば, $\overline{x}\rightarrow\infty$で吸光度の誤差$\sigma_{A\pm}\rightarrow0$である.
+仮に透過率Tに$\pm1$ \%の誤差が乗る時,サンプル1, 5での吸光度の精度は以下のようになる.
+\begin{table}[h]
+   \caption{定常的な透過率誤差に対する吸光度の誤差}
+   \label{tab:kadai_gosa}
+   \centering
+   \begin{tabular}{ccc}
+     \hline
+     サンプル&$\sigma_{A+}$ /&$\sigma_{A-}$ /\\
+     \hline \hline
+     1&$1.35\times10^{-2}$&$-1.34\times10^{-2}$\\
+     5&$4.90\times10^{-2}$&$-4.67\times10^{-2}$\\
+     \hline
+   \end{tabular}
+\end{table}
+\mfig[width=12cm]{asset/graph4.eps}{濃度と$\sigma_{A\pm}$の関係}
+\subsection{}
+試料の透過スペクトルのピークが625 \si{\nano\meter}であったことから,この試料に白色光を通した場合,赤色の光が多く吸収される.
+したがって観測される透過光には青色の成分が多くなり,溶液は青色に見える.
+\subsection{}
+\subsubsection*{アルミニウム青銅}
+アルミニウム青銅(JIS C6301)の組成は以下の通りである\cite{kiso}.
+\begin{table}[h]
+   \caption{アルミニウム青銅の組成}
+   \label{tab:alseido}
+   \centering
+   \begin{tabular}{lc}
+     \hline
+     名称&含有率 / \%\\
+     \hline \hline
+     Cu&77.0 - 84.0\\
+     Al&3.5 - 6.0\\
+     Mn&0.50 - 2.0\\
+     Ni&4.0 - 6.0\\
+     \hline
+   \end{tabular}
+\end{table}\\
+この合金にはAlが多く含まれており,$\rm Al^{3+}$はアンモニア水を加えると$\rm Al(OH)_3$という白色沈殿を生成するため,
+アンミン錯塩法での定量は困難であると考えられる.
+\subsubsection*{リン青銅}
+ベリリウム銅(JIS C1720)の組成は以下の通りである\cite{kiso}.
+\begin{table}[h]
+   \caption{ベリリウム銅の組成}
+   \label{tab:pseido}
+   \centering
+   \begin{tabular}{lc}
+     \hline
+     名称&含有率 / \%\\
+     \hline \hline
+     Cu&96.9 - 97.1\\
+     Be&1.80 - 2.00\\
+     Ni&$>$0.20\\
+     \hline
+   \end{tabular}
+\end{table}
+この合金には妨害イオンになりうる成分が非常に少ない,あるいは無いためアンミン錯塩法で定量可能であると考えられる.

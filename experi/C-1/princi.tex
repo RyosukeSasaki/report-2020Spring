@@ -1,0 +1,40 @@
+\section{実験原理}
+\subsection{Bouguer-Beerの法則}
+強度$I_0$の単色光を濃度$c$の溶液が入った厚さ$b$のセルに入射する.
+このとき,光はその強度に比例して減衰する.即ち,ある地点での光の強度$i$とすると(\ref{equ:bibun})式で表される.\cite{rikougaku}
+\begin{align}
+  \label{equ:bibun}
+  \cfrac{di}{dx}=-ki
+\end{align}
+ただしkは比例定数である.透過光の強度を$I$として, (\ref{equ:bibun})式を変数分離法で積分することで(\ref{equ:btaisu})式を得る.
+\begin{align}
+%  \label{equ:sekibun}
+%  \int_{I_0}^{I} \cfrac{di}{i}=-k \int^b_0 dx\\
+  \label{equ:btaisu}
+  \ln \cfrac{I_0}{I}=kb
+\end{align}
+このことから光が溶液を通過する時,その強度は液層の厚さ$b$に対して指数関数的に減少することがわかる.
+また$\ln\tfrac{I_0}{I}$は$c$にも比例することがわかっている.
+%また,濃度cに対しても同様の関係がある.
+%\begin{align}
+%  \label{equ:ctaisu}
+%  \ln \cfrac{I_0}{I}=k'c
+%\end{align}
+よって右辺に$c$を乗じ,常用対数となるように比例係数$a$を取り直すと,
+\begin{align}
+  \label{equ:kyukodo}
+  A:=\log \cfrac{I_0}{I}=abc
+\end{align}
+ここで$A$を吸光度, $a$を吸光係数と呼ぶ.但し$a$は各物質,波長に固有な定数である. (\ref{equ:kyukodo})式をBouguer-Beerの法則と呼ぶ.
+通常, $b$は\si{\centi\meter}, $c$は\si{\gram.L^{-1}}の単位を用いるが, $c$の単位を\si{\mole.L^{-1}}とした時の吸光係数を特にモル吸光係数$\rm \epsilon$
+と呼ぶ.
+
+(\ref{equ:kyukodo})式において$a$, $b$を固定し,各濃度に対する吸光度をプロットすることで検量線を作成できる.
+未知試料の吸光度を測定し,検量線と照らし合わせることでこれを定量できる.
+\subsection{吸収曲線}
+吸光度のスペクトルを吸収曲線と呼ぶ.もっとも吸光度が高い波長を測定に用いることで
+吸光光度法での分解能を高められる.
+\subsection{アンミン錯塩による銅の定量}
+銅(II)イオンに過剰のアンモニア水を加えると$\rm Cu(NH_3)_4^2+$というアンミン錯体を作る.
+これは深青色であり,より高い吸光係数を持つため,吸光光度法での分解能を高められる.
+ただし$\rm Al^{3+}$や$\rm Co^{2+}$のように沈殿や有色錯体を生成するイオンは測定の妨げになるため,妨害イオンと呼ばれる.

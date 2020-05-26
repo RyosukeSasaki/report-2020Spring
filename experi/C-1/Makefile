@@ -1,0 +1,13 @@
+FILES=hyousi.pdf\
+			out/main.pdf
+R=1
+NUM=1
+
+connect: $(FILES)
+	pdftk $(FILES) cat output "C-$(NUM)佐々木良輔.pdf"
+
+re: $(FILES)
+	pdftk $(FILES) cat output "C-$(NUM)佐々木良輔R$(R).pdf"
+
+clean:
+	rm C-$(NUM)佐々木良輔*

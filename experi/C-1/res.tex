@@ -1,0 +1,77 @@
+\section{実験結果}
+\subsection{溶液の調製}
+表\ref{tab:res_siyaku}に各溶液の色を示す.
+\begin{table}[h]
+   \caption{各溶液の濃度と色の変化}
+   \label{tab:res_siyaku}
+   \centering
+   \begin{tabular}{ccccccc}
+     \hline
+     \multirow{2}{*}{番号}&\multicolumn{3}{c}{体積 / \si{\milli L}}&\multirow{2}{*}{濃度 / \si{\gram.L^{-1}}}&\multirow{2}{*}{溶液の色}&\multirow{2}{*}{発色後の色}\\
+     &初めの読み&終わりの読み&標準溶液の体積&&&\\
+     \hline \hline
+     ①&0.10&0.63&0.53&0.106&薄青色&青色\\
+     ②&0.63&1.75&1.12&0.224&薄青色&深青色\\
+     ③&1.75&3.20&1.45&0.290&薄青色&深青色\\
+     ④&0.29&2.34&2.05&0.410&薄青色&深青色\\
+     ⑤&2.34&4.75&2.51&0.502&薄青色&深青色\\
+     対照液&-&-&-&-&無色&無色\\
+     \hline
+   \end{tabular}
+\end{table}
+\subsection{最大吸収波長の決定}
+最大吸収波長は625 \si{\nano\meter}だった.
+\subsection{検量線の作成}
+表\ref{tab:kyuko}に各溶液の吸光度$\rm A$を示す.
+\begin{table}[h]
+   \caption{吸光度A}
+   \label{tab:kyuko}
+   \centering
+   \begin{tabular}{cc}
+     \hline
+     溶液番号&吸光度A\\
+     \hline \hline
+     ①&0.099\\
+     ②&0.209\\
+     ③&0.285\\
+     ④&0.390\\
+     ⑤&0.476\\
+     \hline
+   \end{tabular}
+\end{table}
+%\appendix
+\renewcommand{\thefigure}{\Alph{figure}}
+\mfig[width=10cm]{asset/graph.png}{検量線(手書き)}
+\renewcommand{\thefigure}{\arabic{figure}}
+\setcounter{figure}{0}
+\mfig[width=10cm]{asset/graph2.png}{検量線(Excel)}
+図\ref{fig:asset/graph2.png}の最尤曲線は最小二乗法によるもので,直線は以下の式で与えられる.
+\begin{align}
+  \label{equ:saiyu}
+  y=0.9526x
+\end{align}
+\subsection{黄銅中の銅の定量}
+試料の質量は$25.6001-25.4673=1.328\times10^{-1}$ \si{\gram}であり,吸光度$A$は0.332であった.
+図\ref{fig:asset/graph.png}をから読み取った試料の銅イオン濃度は0.344 \si{\gram.L^{-1}}であった.
+一方で(\ref{equ:saiyu})式より,図\ref{fig:asset/graph2.png}での試料の銅イオン濃度は0.349 \si{\gram.L^{-1}}であった.
+銅イオン濃度を用いて,黄銅釘中の銅の含有量 [\si{\milli\gram}],含有率 [重量\%]は以下の式で与えられる.
+\begin{align}
+  \label{equ:ryou}
+  含有量\ [\si{\milli\gram}]&=銅イオン濃度\ [\si{\gram.L^{-1}}]\times25\ \si{\milli L}\times\cfrac{100\ \si{\milli L}}{10\ \si{\milli L}}\\
+  \label{equ:ritu}
+  含有率\ [重量\%]&=\cfrac{含有量\ [\si{\milli\gram}]}{釘の質量\ [\si{\milli\gram}]}
+\end{align}
+よって各グラフから求めた含有量,含有率は以下の通りである.
+\begin{table}[h]
+   \caption{銅の含有量と含有率}
+   \label{tab:kekka}
+   \centering
+   \begin{tabular}{lcc}
+     \hline
+     グラフ&含有量 / \si{\milli\gram}&含有率 / 質量\%\\
+     \hline \hline
+     手書き&86.0&64.8\\
+     Excel&87.1&65.6\\
+     \hline
+   \end{tabular}
+\end{table}

@@ -1,0 +1,39 @@
+\subsection{$f(x)=\cos x$の場合}
+\subsubsection{結果}
+表\ref{tab:cos_res}に正規化したフーリエ係数,位相を示す.
+またデジタイザからの入力波形と1次の波形を図\ref{fig:asset/cos/wave1.png},各次数の振幅を図\ref{fig:asset/cos/Amp.png},各次数の位相を図\ref{fig:asset/cos/phase.png}に示す.
+\begin{table}[h]
+   \caption{余弦波のフーリエ係数,位相}
+   \label{tab:cos_res}
+   \centering
+   \begin{tabular}{ccccc}
+     \hline
+     次数$n$&$a_n$&$b_n$&$A_n$&$\phi_n$\\
+     \hline \hline
+     0 & 0.0393 & - & 0.0197 & - \\
+1 & 0.9999 & 0.0129 & 1.0000 & 0.0129 \\
+2 & -0.0030 & -0.0101 & 0.0106 & -1.8554 \\
+3 & -0.0092 & -0.0028 & 0.0096 & -2.8423 \\
+4 & 0.0031 & 0.0014 & 0.0034 & 0.4293 \\
+5 & 0.0023 & -0.0057 & 0.0062 & -1.1836 \\
+6 & -0.0028 & -0.0059 & 0.0065 & -2.0184 \\
+7 & 0.0017 & 0.0000 & 0.0017 & -0.0086 \\
+8 & 0.0000 & -0.0011 & 0.0011 & -1.5334 \\
+9 & 0.0028 & -0.0018 & 0.0033 & -0.5723 \\
+10 & -0.0009 & 0.0007 & 0.0011 & 2.4475\\
+     \hline
+   \end{tabular}
+\end{table}
+\mfig[width=7cm]{asset/cos/wave1.png}{余弦波の入力波形と1次の波形}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/cos/Amp.png}{余弦波の各次数での振幅}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/cos/phase.png}{余弦波の各次数での位相}
+  \end{minipage} 
+\end{figure}
+\newpage
+\subsubsection{考察・課題}
+図\ref{fig:asset/cos/Amp.png}からわかるように,このフーリエ級数は1次の項のみが大きな値を持ち,他は非常に小さい.
+このことから,位相は1次でのみ意味にある値を持ち,他はランダムな値を持つと考えられる. $\phi_1\simeq0$であり,これは理論値と一致する.

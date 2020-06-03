@@ -1,0 +1,35 @@
+\documentclass[uplatex,a4j,11pt]{jsarticle}
+
+
+\renewcommand{\thesection}{\arabic{section}.}
+\bibliographystyle{jplain}
+\newcommand*{\conjugate}[1]{\overline{#1}}
+
+% 数式
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+\makeatletter
+\renewcommand{\thefigure}{\thesubsection.\arabic{figure}}
+\@addtoreset{figure}{subsection}
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+    \includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+
+
+\begin{document}
+
+\input{goal.tex}
+\input{theory.tex}
+\input{res.tex}
+\input{conclusion.tex}
+
+\bibliography{ref.bib}
+\end{document}

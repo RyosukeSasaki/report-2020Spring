@@ -1,0 +1,28 @@
+\subsubsection{$\delta$関数}
+デジタイザからの入力波形と30次の波形を図\ref{fig:asset/delta/wave30.png},入力波形と64次の波形を図\ref{fig:asset/delta/wave64.png},各次数の振幅を図\ref{fig:asset/delta/Amp.png},各次数の位相を図\ref{fig:asset/delta/phase.png}に示す.
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/delta/wave30.png}{$\delta$関数の入力波形と30次の波形}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/delta/wave64.png}{$\delta$関数の入力波形と64次の波形}
+  \end{minipage} 
+\end{figure}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/delta/Amp.png}{$\delta$関数の各次数での振幅}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/delta/phase.png}{$\delta$関数の各次数での位相}
+  \end{minipage} 
+\end{figure}
+\newpage
+\subsubsection{考察・課題}
+図\ref{fig:asset/pulse_delta/pulse_delta.png}に各パルス, $\delta$関数でのフーリエ係数の収束を示す.
+図\ref{fig:asset/pulse_delta/pulse_delta.png}のように,パルス幅が狭くなるほど収束は遅くなり,パルス幅が0即ち$\delta$関数ではすべての次数で一定の係数を持っている.
+パルス幅が狭くなるほど関数は急激な変化をするため,より高い次数が必要になるのは直感と一致する.
+
+また,フーリエ係数の計算が周波数空間での関数の成分表示を求めることであり,周波数空間での基底と関数の内積を取る操作であることを考慮すると,
+$x=0$でのみ値を持つ$\delta$関数と$\sin nx$の内積は, $\sin n\cdot 0=0$なので常に$0$だとわかる.このことから位相$\phi_n$が全次数で0であることもわかる.
+同様に$\cos nx$との内積は, $\cos n\cdot 0=1$なので常に同じ値となる.
+\mfig[width=7cm]{asset/pulse_delta/pulse_delta.png}{各パルス, $\delta$関数のフーリエ係数の収束}

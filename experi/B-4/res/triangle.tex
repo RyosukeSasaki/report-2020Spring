@@ -1,0 +1,82 @@
+\subsubsection{三角波の結果}
+表\ref{tab:triangle_res}に正規化したフーリエ係数,位相を示す.
+またデジタイザからの入力波形と1次の波形を図\ref{fig:asset/triangle/wave1.png},入力波形と5次の波形を図\ref{fig:asset/triangle/wave5.png},各次数の振幅を図\ref{fig:asset/triangle/Amp.png},各次数の位相を図\ref{fig:asset/triangle/phase.png}に示す.
+\begin{table}[h]
+   \caption{三角波のフーリエ係数,位相}
+   \label{tab:triangle_res}
+   \centering
+   \begin{tabular}{ccccc}
+     \hline
+     次数$n$&$a_n$&$b_n$&$A_n$&$\phi_n$\\
+     \hline \hline
+     0 & 2.5026 & - & 1.2513 & - \\
+     1 & -0.9998 & -0.0185 & 1.0000 & -3.1231 \\
+     2 & -0.0004 & -0.0067 & 0.0067 & -1.6249 \\
+     3 & -0.1113 & -0.0061 & 0.1115 & -3.0867 \\
+     4 & -0.0005 & -0.0032 & 0.0033 & -1.7120 \\
+     5 & -0.0406 & -0.0037 & 0.0408 & -3.0505 \\
+     6 & -0.0003 & -0.0022 & 0.0022 & -1.7267 \\
+     7 & -0.0208 & -0.0026 & 0.0210 & -3.0150 \\
+     8 & -0.0004 & -0.0017 & 0.0018 & -1.8227 \\
+     9 & -0.0129 & -0.0020 & 0.0131 & -2.9898 \\
+     10 & -0.0004 & -0.0013 & 0.0014 & -1.8446 \\
+     \hline
+   \end{tabular}
+\end{table}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/triangle/wave1.png}{三角波の入力波形と1次の波形}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/triangle/wave5.png}{三角波の入力波形と5次の波形}
+  \end{minipage} 
+\end{figure}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/triangle/Amp.png}{三角波の各次数での振幅}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/triangle/phase.png}{三角波の各次数での位相}
+  \end{minipage} 
+\end{figure}
+
+\subsubsection{考察・課題}
+矩形波,三角波共に不連続点で入力データと合成波のズレが大きくなっている.これは合成波の次数が低く,完全性が満たされていないために発生する.
+より高次の三角関数を用いることで急激な変化に対しても再現性を高められる.
+
+また,矩形波のフーリエ係数は以下のようになる.
+\begin{align*}
+  a_0&=1\\
+  a_n&=
+  \begin{cases}
+    -\cfrac{2A}{n\pi}\sin \cfrac{n}{2}\pi & nが奇数\\
+    0 & nが偶数
+  \end{cases}\\
+  b_n&=0
+\end{align*}
+このことから,矩形波のフーリエ係数は次数が奇数のときのみ成分を持ち,これは次数に反比例することがわかる.
+実際に図\ref{fig:asset/tri_square/squ.png}から,正規化したフーリエ係数が$1/n$とよく一致していることがわかる.
+
+また,三角波のフーリエ係数は以下のようになる.
+\begin{align*}
+  a_0&=1\\
+  a_n&=
+  \begin{cases}
+    \cfrac{-4A}{n^2\pi^2} & nが奇数\\
+    0 & nが偶数
+  \end{cases}\\
+  b_n&=0
+\end{align*}
+このことから,三角波のフーリエ係数は次数が奇数のときのみ成分を持ち,これは次数の二乗に反比例することがわかる.
+実際に図\ref{fig:asset/tri_square/tri.png}から,正規化したフーリエ係数が$1/n^2$とよく一致していることがわかる.
+また,以上の議論や図\ref{fig:asset/tri_square/tri_squ.png}から,三角波のほうが矩形波よりも速く収束することがわかる.
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/tri_square/squ.png}{矩形波のフーリエ係数の収束}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/tri_square/tri.png}{三角波のフーリエ係数の収束}
+  \end{minipage} 
+\end{figure}
+
+\mfig[width=7cm]{asset/tri_square/tri_squ.png}{矩形波と三角波の収束の比較}

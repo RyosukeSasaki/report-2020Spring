@@ -1,0 +1,73 @@
+\subsubsection{鋸波2}
+表\ref{tab:saw2_res}に正規化したフーリエ係数,位相を示す.
+またデジタイザからの入力波形と30次の波形を図\ref{fig:asset/saw2/wave30.png},入力波形と64次の波形を図\ref{fig:asset/saw2/wave64.png},入力波形と64次の波形を図\ref{fig:asset/saw2/wave64.png},各次数の振幅を図\ref{fig:asset/saw2/Amp.png},各次数の位相を図\ref{fig:asset/saw2/phase.png}に示す.
+\begin{table}[h]
+   \caption{鋸波2のフーリエ係数,位相}
+   \label{tab:saw2_res}
+   \centering
+   \begin{tabular}{ccccc}
+     \hline
+     次数$n$&$a_n$&$b_n$&$A_n$&$\phi_n$\\
+     \hline \hline
+     0 & 0.0373 & - & 0.0187 & - \\
+1 & 0.0021 & -0.0064 & 0.0067 & -1.2528 \\
+2 & -0.0234 & 0.9997 & 1.0000 & 1.5942 \\
+3 & -0.0021 & -0.0068 & 0.0071 & -1.8673 \\
+4 & 0.0218 & -0.5041 & 0.5046 & -1.5276 \\
+5 & 0.0005 & 0.0007 & 0.0009 & 0.9698 \\
+6 & -0.0224 & 0.3320 & 0.3327 & 1.6381 \\
+7 & -0.0010 & -0.0046 & 0.0047 & -1.7884 \\
+8 & 0.0217 & -0.2497 & 0.2506 & -1.4840 \\
+9 & 0.0002 & 0.0017 & 0.0018 & 1.4383 \\
+10 & -0.0222 & 0.1961 & 0.1973 & 1.6833 \\
+     \hline
+   \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw2/wave30.png}{鋸波2の入力波形と30次の波形}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw2/wave64.png}{鋸波2の入力波形と64次の波形}
+  \end{minipage} 
+\end{figure}
+
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw2/Amp.png}{鋸波2の各次数での振幅}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw2/phase.png}{鋸波2の各次数での位相}
+  \end{minipage} 
+\end{figure}
+
+\subsubsection{考察・課題}
+矩形波,三角波と同様に不連続点付近では合成波と入力データの差が大きくなっていることがわかる.
+図\ref{fig:asset/saw1/wave64.png},図\ref{fig:asset/saw2/wave64.png}からわかるように次数を高めることでこの差を小さくすることができる.
+
+また鋸波1のフーリエ係数は以下のようになる.
+\begin{align*}
+  a_n&=0\\
+  b_n&=\cfrac{2(-1)^{n+1}}{n\pi}
+\end{align*}
+一方で鋸波2のフーリエ係数は以下のようになる.
+\begin{align*}
+  a_n&=0\\
+  b_n&=
+  \begin{cases}
+    0 & nが奇数\\
+    \cfrac{4(-1)^{\frac{n}{2}+1}}{n\pi} & nが偶数
+  \end{cases}
+\end{align*}
+このことから,鋸波1は$1/n$,鋸波2は$2/n$の速度で収束することがわかる.実際,図\ref{fig:asset/saw12/saw1.png},図\ref{fig:asset/saw12/saw2.png}のように各係数の収束と$1/n$, $2/n$はよく一致する.
+また,鋸波1, 2は次数が低い場合収束の速度が大きく異なるが$n\rightarrow\infty$では同じ速度で収束することがわかる.
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw12/saw1.png}{鋸波1のフーリエ係数の収束}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw12/saw2.png}{鋸波2のフーリエ係数の収束}
+  \end{minipage} 
+\end{figure}
+\mfig[width=7cm]{asset/saw12/saw12.png}{鋸波1と鋸波2の収束の比較}

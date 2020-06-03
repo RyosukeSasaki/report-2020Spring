@@ -1,0 +1,45 @@
+\subsection{$f(x)=\sin x$の場合}
+\subsubsection{結果}
+表\ref{tab:sin_res}に正規化したフーリエ係数,位相を示す.
+またデジタイザからの入力波形と1次の波形を図\ref{fig:asset/sin/wave1.png},各次数の振幅を図\ref{fig:asset/sin/Amp.png},各次数の位相を図\ref{fig:asset/sin/phase.png}に示す.
+\begin{table}[h]
+   \caption{正弦波のフーリエ係数,位相}
+   \label{tab:sin_res}
+   \centering
+   \begin{tabular}{ccccc}
+     \hline
+     次数$n$&$a_n$&$b_n$&$A_n$&$\phi_n$\\
+     \hline \hline
+     0 & 0.0212 & - & 0.0106 & - \\
+1 & 0.0046 & 1.0000 & 1.0000 & 1.5662 \\
+2 & -0.0034 & -0.0081 & 0.0088 & -1.9631 \\
+3 & -0.0025 & -0.0085 & 0.0088 & -1.8555 \\
+4 & -0.0004 & -0.0023 & 0.0023 & -1.7596 \\
+5 & 0.0012 & 0.0023 & 0.0026 & 1.1035 \\
+6 & 0.0007 & 0.0012 & 0.0014 & 1.0311 \\
+7 & 0.0005 & -0.0008 & 0.0009 & -0.9570 \\
+8 & -0.0003 & 0.0006 & 0.0007 & 2.0839 \\
+9 & 0.0033 & 0.0000 & 0.0033 & -0.0104 \\
+10 & -0.0009 & 0.0003 & 0.0009 & 2.8579 \\
+     \hline
+   \end{tabular}
+\end{table}
+\mfig[width=7cm]{asset/sin/wave1.png}{正弦波の入力波形と1次の波形}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/sin/Amp.png}{正弦波の各次数での振幅}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/sin/phase.png}{正弦波の各次数での位相}
+  \end{minipage} 
+\end{figure}
+\subsubsection{考察・課題}
+(\ref{equ:phase_fourier_series})式からわかるように,フーリエ係数$A_0$は入力波形の定常成分を表し,その値は$A_0=\frac{a_0}{2}$である.
+これを教科書の式$f(x)=A+B\sin(2\pi/T)$ \cite{rikougaku}見比べたとき, $A=A_0$であり,したがって$a_0=2A$である.
+また入力波形は1周期の正弦波なので,フーリエ係数は$b_1$のみが値を持ち,これは$B$と一致するはずである.
+実際に表\ref{tab:sin_res}から$b_1$のみが大きな値を持ち,他の成分は非常に少ないことがわかる.
+
+表\ref{tab:sin_res}と教科書の表1(以下理論値)を比較する.ただし表\ref{tab:sin_res}は$A_1$で正規化してることに注意する.
+表\ref{tab:sin_res}から$b_1$, $A_1$の値が1.0000であり, 他は非常に小さな値であることがわかる.
+また$\tfrac{\pi}{2}\simeq1.5707$であり, $\phi_1$と近い.またそれ以外の次数で$\phi_n$はランダムな値を取っている.
+印刷した入力波形が有限の幅を持ち,また離散化誤差が生じることを考えれば,データは理論値とよく一致している.

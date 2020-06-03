@@ -1,0 +1,45 @@
+\subsection{鋸波}
+\subsubsection{鋸波1}
+表\ref{tab:saw1_res}に正規化したフーリエ係数,位相を示す.
+またデジタイザからの入力波形と1次の波形を図\ref{fig:asset/saw1/wave1.png},入力波形と30次の波形を図\ref{fig:asset/saw1/wave30.png},入力波形と64次の波形を図\ref{fig:asset/saw1/wave64.png},各次数の振幅を図\ref{fig:asset/saw1/Amp.png},各次数の位相を図\ref{fig:asset/saw1/phase.png}に示す.
+\begin{table}[h]
+   \caption{鋸波1のフーリエ係数,位相}
+   \label{tab:saw1_res}
+   \centering
+   \begin{tabular}{ccccc}
+     \hline
+     次数$n$&$a_n$&$b_n$&$A_n$&$\phi_n$\\
+     \hline \hline
+     0 & 0.0076 & - & 0.0038 & - \\
+1 & 0.0230 & 1.0000 & 1.0003 & 0.0033 \\
+2 & -0.0246 & -0.4996 & 0.5002 & -0.0035 \\
+3 & 0.0244 & 0.3327 & 0.3336 & 0.0032 \\
+4 & -0.0245 & -0.2492 & 0.2504 & -0.0036 \\
+5 & 0.0246 & 0.1990 & 0.2005 & 0.0031 \\
+6 & -0.0245 & -0.1655 & 0.1673 & -0.0037 \\
+7 & 0.0245 & 0.1415 & 0.1436 & 0.0030 \\
+8 & -0.0245 & -0.1234 & 0.1258 & -0.0038 \\
+9 & 0.0245 & 0.1093 & 0.1120 & 0.0029 \\
+10 & -0.0245 & -0.0980 & 0.1010 & -0.0039 \\
+     \hline
+   \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw1/wave1.png}{鋸波1の入力波形と1次の波形}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw1/wave30.png}{鋸波1の入力波形と30次の波形}
+  \end{minipage} 
+\end{figure}
+\mfig[width=7cm]{asset/saw1/wave64.png}{鋸波1の入力波形と64次の波形}
+
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw1/Amp.png}{鋸波1の各次数での振幅}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{asset/saw1/phase.png}{鋸波1の各次数での位相}
+  \end{minipage} 
+\end{figure}

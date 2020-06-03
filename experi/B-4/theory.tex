@@ -1,0 +1,116 @@
+\section{実験原理}
+\subsection{フーリエ級数について}
+周期$2L$の区分的になめらかな関数$f(x)$は以下のように展開され,これをフーリエ級数(Fourier Series)と呼ぶ.
+\begin{align}
+  \label{equ:fourier_series}
+  f(x)=\cfrac{a_0}{2}+\sum_{n=1}^{\infty}\left( a_n\cos nx+b_n\sin nx \right)
+\end{align}
+ここでは簡単のため周期$2L=2\pi$としたが, $x=\tfrac{\pi}{L}x'$と変数変換することで任意の周期$2L$を取り扱うことができる.
+また,級数は収束するものとする.
+
+これは任意の周期関数が様々な周波数の三角関数の重ね合わせとして表せることを表している.
+また$a_n$, $b_n$を並べることで,関数の周波数成分の強度を取り出すことができる.
+ここで$a_n$, $b_n$はフーリエ係数と呼ばれ,以下のように与えられる.
+\begin{align}
+  \label{equ:fourier_factor_a}
+  a_n&=\cfrac{1}{\pi}\int^{\pi}_{-\pi}f(x)\cos nx dx\\
+  \label{equ:fourier_factor_b}
+  b_n&=\cfrac{1}{\pi}\int^{\pi}_{-\pi}f(x)\sin nx dx
+\end{align}
+ただし$a_0$については(\ref{equ:fourier_series})式の両辺を$-\pi$から$\pi$で積分することで
+\begin{align*}
+  \int_{-\pi}^{\pi}f(x)dx&=\int_{-\pi}^{\pi}\cfrac{a_0}{2}\\
+  &=\cfrac{a_0}{2}\pi
+\end{align*}
+\begin{align}
+  \label{equ:fourier_factor_0}
+  \therefore\ a_0&=\cfrac{2}{\pi}\int^{\pi}_{-\pi}f(x)dx
+\end{align}
+と与えられる.\\
+また(\ref{equ:fourier_factor_a})式, (\ref{equ:fourier_factor_b})式は$\cos x$, $\sin x$の積が以下の性質を持つことから容易に確かめられる.
+\begin{align}
+  \label{equ:cosinesine}
+  \cfrac{1}{\pi}\int^{\pi}_{-\pi}\cos nx\cdot\sin mx &= 0\\
+  \cfrac{1}{\pi}\int^{\pi}_{-\pi}\cos nx\cdot\cos mx &= \delta_{mn}\\
+  \cfrac{1}{\pi}\int^{\pi}_{-\pi}\sin nx\cdot\sin mx &= \delta_{mn}
+\end{align}
+ここで$\delta_{mn}$はKroneckerのデルタである.
+\begin{align}
+  \label{equ:delta}
+  \delta_{mn}=
+  \begin{cases}
+    1 & (m=n)\\
+    0 & (m\neq n)
+  \end{cases}
+\end{align}
+これは三角関数が周波数成分ごとに直交していることを表す.
+また$a_n\cos nx$, $b_n\sin nx$は規格化されているので,
+フーリエ級数は無限次元の正規直交関数系であると言える.
+したがって(\ref{equ:fourier_factor_a})式, (\ref{equ:fourier_factor_b})式は関数と正規直交基底の内積を取ることで成分表示をすることと対応している.
+\subsection{複素数型のフーリエ級数と完全性\cite{shindohado}}
+オイラーの式$\mathrm{e}^{i\theta}=\cos\theta+i\sin\theta$を用いると
+\begin{align}
+  \cos\theta&=\cfrac{\mathrm{e}^{i\theta}+\conjugate{e^{i\theta}}}{2}\\
+  \sin\theta&=\cfrac{\mathrm{e}^{i\theta}-\conjugate{e^{i\theta}}}{2}
+\end{align}
+と表される.ここで$\conjugate{x}$は$x$の複素共役である.これを(\ref{equ:fourier_series})式に代入すると
+\begin{align}
+  \label{equ:complex_fourier}
+  \begin{split}
+    f(x)&=\cfrac{a_0}{2}+\cfrac{1}{2}\sum_{n=0}^{\infty} \left\{ a_n (\mathrm{e}^{inx} + \conjugate{\mathrm{e}^{inx}}) + b_n (\mathrm{e}^{inx} - \conjugate{\mathrm{e}^{inx}})\right\}\\
+    &=\cfrac{a_0}{2}+\sum^{\infty}_{n=1} \left(\cfrac{a_n-ib_n}{2}\right)\mathrm{e}^{inx}+\sum_{n=-1}^{-\infty} \left(\cfrac{a_{-n}+ib_{-n}}{2}\right)\mathrm{e}^{inx}\\
+    &=:\sum^{\infty}_{n=-\infty}c_n\mathrm{e}^{inx}
+    \end{split}
+\end{align}
+となり,これを複素数型のフーリエ級数と呼ぶ.ただし$c_n$は以下のように与えられる.
+\begin{align}
+  \label{equ:fourier_factor_c}
+  c_n=\cfrac{1}{2\pi}\int_{-\pi}^{\pi}\conjugate{e^{inx}}f(x)dx
+\end{align}
+(\ref{equ:fourier_factor_c})式を(\ref{equ:complex_fourier})式に代入すると
+\begin{align}
+  \label{equ:complete}
+  \begin{split}
+    f(x)
+%    &=\sum^{\infty}_{n=-\infty}\cfrac{1}{2\pi}\int^{\pi}_{-\pi}\mathrm{e}^{in(x-x')}f(x')dx\\
+    &=\int^{\pi}_{-\pi}\sum^{\infty}_{n=-\infty}\cfrac{1}{2\pi}\mathrm{e}^{in(x-x')}f(x')dx'
+  \end{split}
+\end{align}
+ここで$\sum^{\infty}_{n=-\infty}\tfrac{1}{2\pi}\mathrm{e}^{in(x-x')}$について考える.これは公比$e^{i(x-x')}$の無限等比級数なので
+\begin{align}
+  \begin{split}
+  \sum^{\infty}_{n=-\infty}\cfrac{1}{2\pi}\mathrm{e}^{in(x-x')}&=\cfrac{1}{2\pi}\lim_{N \to \infty}\sum_{n=-N}^N\mathrm{e}^{in(x-x')}\\
+  &=\cfrac{1}{2\pi}\lim_{N\to\infty}\cfrac{\mathrm{e}^{-i(x-x')N}-\mathrm{e}^{i(x-x')(N+1)}}{1-\mathrm{e}^{i(x-x')}}\\
+  &=\cfrac{1}{2\pi}\lim_{N\to\infty}\cfrac{\mathrm{e}^{-i(x-x')\left(N+\frac{1}{2}\right)}-\mathrm{e}^{i(x-x')\left(N+\frac{1}{2}\right)}}{\mathrm{e}^{-\frac{i}{2}(x-x')}-\mathrm{e}^{\frac{i}{2}(x-x')}}\\
+  &=\cfrac{1}{2\pi}\lim_{N\to\infty}\cfrac{\sin\left\{(N+\frac{1}{2})(x-x')\right\}}{\sin\left\{\frac{1}{2}(x-x')\right\}}\\
+  &=:\lim_{N\to\infty}\delta_N(x-x')\\
+  &=:\delta(x-x')
+  \end{split}
+\end{align}
+ここで$\delta(x)$はdiracの$\delta$関数である.すなわち任意の関数$\varphi(x)$, $\epsilon > 0$について以下を満たすものとする.
+\begin{align*}
+  \delta(x)=
+  \begin{cases}
+    0 & (x\neq0)\\
+    \infty & (x=0)
+  \end{cases}
+\end{align*}
+\begin{align*}
+  \int^{x+\epsilon}_{x-\epsilon}\varphi(x')\delta(x-x')dx'=\varphi(x)
+\end{align*}
+これを用いて(\ref{equ:complete})式を計算する.
+\begin{align}
+    f(x)&=\int^{\pi}_{-\pi}f(x')\delta(x-x')dx'\\
+    &=f(x)
+\end{align}
+以上から任意の関数のフーリエ展開が元の関数と一致することが言え,フーリエ級数は完全性を持つと言える.
+よってフーリエ級数は完全正規直交関数系である.
+しかし完全性は無限級数を計算して初めて満たされるので,次数を下げると完全性は失われる.したがって実用的な計算においては元の関数との乖離が生じる.
+\subsection{振幅と位相のスペクトル}
+(\ref{equ:fourier_series})式は三角関数の合成を用いて以下のように表される.
+\begin{align}
+  \label{equ:phase_fourier_series}
+  f(x)=A_0+\sum^N_{n=1}A_n\cos(nx-\phi_n)
+\end{align}
+ただし$A_n=\sqrt{a_n^2+b_n^2}\ (n\neq0)$, $A_0=\tfrac{a_0}{2}$, $\phi_n=\tan^{-1}\tfrac{b_n}{a_n}$\\
+$A_n$:第n次高調波の振幅, $\phi_n$:第n次高調波の位相\\である.またそれぞれの集合$\{A\}$, $\{\phi\}$は振幅,位相のスペクトルと呼ばれ,プリズムによる分光などで観測される.この表式は工学分野でよく用いられる.

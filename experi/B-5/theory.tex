@@ -1,0 +1,73 @@
+\section{実験原理}
+\subsection{RLC回路}
+図\ref{fig:fig1.jpg}のような抵抗,インダクタ,キャパシタの直列回路を考える.調和振動子との類推から,
+電源電圧を$e(t)=E_m\sin \omega t$, 電流を$i(t)=I_m\sin (\omega t+\phi)$とすると, Kirchhoffの法則から以下が成り立つ.
+\begin{align}
+  \label{equ:theo_RLC}
+  &e(t)=Ri(t)+L\cfrac{di(t)}{dt}+\cfrac{1}{c}\int i(t)dt
+\end{align}
+これは強制振動型の2階常微分方程式であり,これを解くと
+\begin{align}
+  \label{equ:theo_solution_for_et}
+  &E_m\sin \omega t=\sqrt{R^2+\left(\omega L-\cfrac{1}{\omega C}\right)^2}I_m\sin (\omega t+\phi+\theta)+D\\
+  \label{equ:theo_theta}
+  &\theta=\arctan\left(\cfrac{\omega L-\frac{1}{\omega C}}{R}\right)
+\end{align}
+となる.ここで$D$は任意定数である. (\ref{equ:theo_solution_for_et})式が時間$t$に関する恒等式となるには, $\phi=-\theta$, $D=0$が導かれる.
+この元で(\ref{equ:theo_solution_for_et})式は以下のように変形できる.
+\begin{align}
+  \label{equ:theo_Em}
+  E_m=\sqrt{R^2+\left(\omega L-\cfrac{1}{\omega C}\right)^2}I_m =: Z(\omega)I_m
+\end{align}
+ここで$Z(\omega)$をインピーダンスと呼び, 単位は\si{\ohm}である.このことはRLC回路において,抵抗に相当する量が存在し,これが電源周波数に依存することを示唆する.
+\subsection{共振現象}
+リアクタンス$X(\omega)$を以下のように定義する.
+\begin{align}
+  \label{equ:theo_react}
+  X(\omega)=\omega L-\cfrac{1}{\omega C}
+\end{align}
+ここで$X(\omega)=0$となる角周波数を共振角周波数$\omega_0$とする.また$\omega_0$に対する周波数を共振周波数と呼び$f_0$で表す.
+共振周波数においてインピーダンス$Z(\omega_0)=R$で最小値を取り,その時に電流値は最大値$I_{max}$を取る.
+\begin{align}
+  \label{equ:theo_omega0}
+  &\omega_0=\cfrac{1}{\sqrt{LC}}\\
+  \label{equ:theo_f0}
+  &f_0=\cfrac{\omega_0}{2\pi}\\
+  \label{equ:theo_imax}
+  &I_{max}=\cfrac{E}{R}
+\end{align}
+このような現象を共振と呼ぶ.また,抵抗,インダクタ,キャパシタの両端の電圧$V_R$, $V_L$, $V_C$は
+\begin{align}
+  \label{equ:theo_VRLC}
+  \begin{split}
+  &V_R=RI\\
+  &V_L=\omega LI\\
+  &V_C=\cfrac{I}{\omega C}
+  \end{split}
+\end{align}
+であり, (\ref{equ:theo_react})式から共振周波数において$V_L=V_C$だとわかる.また(\ref{equ:theo_VRLC})式を用いて(\ref{equ:theo_theta})式は
+\begin{align}
+  \label{equ:theo_theta2}
+  \theta=\arctan\left(\cfrac{V_L-V_C}{V_R}\right)=-\phi
+\end{align}
+とも表され,このことから共振周波数において電流と電圧の位相差は0になることがわかる.
+\subsection{Q値}
+電流$I$を$I_{max}$で正規化すると
+\begin{align}
+  \label{equ:theo_norm_1}
+  \cfrac{I}{I_{max}}=\cfrac{1}{\sqrt{R^2+\left(\omega L-\frac{1}{\omega C}\right)^2}}
+\end{align}
+ここで以下のように無次元量Qを定義すると(\ref{equ:theo_norm_1})式は以下のようになる.
+\begin{align}
+  \label{equ:theo_Q_1}
+  &Q:=\cfrac{1}{R}\sqrt{\cfrac{L}{C}}\\
+  \label{equ:theo_norm_2}
+  &\cfrac{I}{I_{max}}=\cfrac{1}{\sqrt{1+Q\left(\frac{\omega}{\omega_0}-\frac{\omega_0}{\omega}\right)^2}}
+\end{align}
+ここで$\frac{I}{I_{max}}=\frac{1}{\sqrt{2}}$となる角周波数を$\omega_1$, $\omega_2$とすると
+\begin{align}
+  \label{equ:theo_Q_2}
+  Q=\cfrac{\omega_0}{\omega_2-\omega_1}
+\end{align}
+が言える.即ちQ値とは共振曲線の鋭さを表す量である.
+\mfig[width=7cm]{fig1.jpg}{RLC回路\cite{rikougaku}}

@@ -1,0 +1,83 @@
+\section{実験結果}
+\subsection{コンデンサーの作製}
+製作したコンデンサーの条件は表\ref{tab:capacitor}のようになった.
+\begin{table}[htbp]
+   \caption{コンデンサーの条件}
+   \label{tab:capacitor}
+   \centering
+   \begin{tabular}{lc}
+     \hline
+     項目&値\\
+     \hline \hline
+     紙の厚さ&0.065 \si{\milli\metre}\\
+     紙の厚さ(10枚重ね)&0.675 \si{\milli\metre}\\
+     極板の一辺&398.0 \si{\milli\metre}\\
+     極板の一辺&400.4 \si{\milli\metre}\\
+     キャパシタンス&33.1 \si{\nano\farad}\\
+     \hline
+   \end{tabular}
+\end{table}\\
+従って,紙の比誘電率$\overline{\epsilon}$は以下のようになる.
+\begin{align*}
+  \overline{\epsilon}=\cfrac{33.1\times10^{-9}\times0.0675\times10^{-3}}{\epsilon_0\times0.3980\times0.4004}\approx1.58
+\end{align*}
+\subsection{測定}
+表\ref{tab:condition}に各実験の条件を示す.
+\begin{table}[h]
+   \caption{実験条件}
+   \label{tab:condition}
+   \centering
+   \begin{tabular}{c|cccc}
+     \hline
+     実験&電源電圧 / \si{\volt}&抵抗 / \si{\ohm}&キャパシタンス / \si{\nano\farad}&インダクタンス / \si{\milli\henry}\\
+     \hline \hline
+     1&1.2&0&33.1&50\\
+     2&1.2&150&33.1&50\\
+     3&1.2&150&33.1&75\\
+     \hline
+   \end{tabular}
+\end{table}
+図\ref{fig:graph1.eps}に各実験での共振曲線,図\ref{fig:graph2.eps}に$f$-$\theta$グラフ,図\ref{fig:graph3.eps}に$f$-$I/I_{max}$グラフを示す.
+なお,共振曲線の最尤曲線は最小二乗法により作図しており,そのパラメーターを表\ref{tab:saiyu}に示す.
+\mfig[width=9cm]{graph1.eps}{共振曲線}
+\mfig[width=9cm]{graph2.eps}{$f$-$\theta$グラフ}
+\mfig[width=9cm]{graph3.eps}{$f$-$I/I_{max}$グラフ}
+\begin{table}[htbp]
+   \caption{共振曲線の最尤曲線}
+   \label{tab:saiyu}
+   \centering
+   \begin{tabular}{c|ccc}
+     \hline
+     実験&抵抗 / \si{\ohm}&キャパシタンス / \si{\nano\farad}&インダクタンス / \si{\milli\henry}\\
+     \hline \hline
+     1 & $63.99\pm{0.15}$ & $53.09\pm{0.29}$ & $29.07\pm{0.16}$ \\
+     2 & $226.1\pm{0.3}$ & $54.17\pm{0.10}$ & $28.51\pm{0.05}$ \\
+     3 & $260.1\pm{0.4}$ & $81.32\pm{0.21}$ & $28.67\pm{0.07}$ \\
+     \hline
+   \end{tabular}
+\end{table}
+また,実験1〜3に関して$V_R$, $V_L$, $V_C$のグラフを示す.
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{graph4_2.eps}{実験1の$V_R$グラフ}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{graph4_1.eps}{実験1の$V_L$, $V_C$グラフ}
+  \end{minipage} 
+\end{figure}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{graph5_2.eps}{実験2の$V_R$グラフ}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{graph5_1.eps}{実験2の$V_L$, $V_C$グラフ}
+  \end{minipage} 
+\end{figure}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{graph6_2.eps}{実験3の$V_R$グラフ}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=7cm]{graph6_1.eps}{実験3の$V_L$, $V_C$グラフ}
+  \end{minipage} 
+\end{figure}

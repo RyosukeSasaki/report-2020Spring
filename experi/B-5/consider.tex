@@ -1,0 +1,154 @@
+\section{考察}
+\subsection{紙の比誘電率}
+\subsubsection{厚さの測定方法}
+今回1枚の紙をマイクロメーターで測る, 10枚重ねて測るなどの方法で紙の厚さを測定した.
+紙を複数枚重ねることで有効数字を増やすことができるが,ここで測定しているのは複数枚の紙の厚さの分布である.したがって,全ての紙の厚さが同じでないと実験に用いた紙そのものの厚さの測定精度を向上したとは言い難い.
+また,紙を重ねたことで間に隙間が生まれたり,圧力によって厚さが変動すると考えられる.
+よって,より適切な厚さの測定方法は,実際に用いる紙の厚さを複数点で測定し,厚さの分布を求めることだと考えられる.
+\subsubsection{比誘電率}
+クラフト紙の比誘電率の文献地は2.9である\cite{rika}.一方で実験値は1.58となった.これは実験値の約半分である.
+原因として以下のようなものが考えられる.
+\begin{itemize}
+  \item 極板のズレ
+  \item 極板間距離の変動
+  \item 湿度
+\end{itemize}
+今回,極板の全面積がコンデンサとなっている仮定で比誘電率を測定したが,実際には配線の関係で極板は完全には重なっていない.
+また,極板が曲がっていたり,重石の圧力不足で極板間距離が大きくなることが考えられる.ここでは仮に,極板間距離が平均で30 \si{\micro\metre}厚く,
+また極板が20 \si{\milli\metre}ずれていたとすると
+\begin{align*}
+  \overline{\epsilon}=\cfrac{33.1\times10^{-9}\times0.0975\times10^{-3}}{\epsilon_0\times0.3980\times(0.4004-0.02\times2)}\approx2.54
+\end{align*}
+このように僅かな実験条件の差でも比誘電率は大幅に変動することがわかる.
+\subsection{共振曲線について}
+図\ref{fig:graph1.eps}から,共振周波数$f_0$は実験1, 2ではほぼ変化せず,実験3では減少している.
+これはインダクタンスの変化によるものであり, (\ref{equ:theo_f0})式から自明にわかる.
+
+また,共振時の電流$I_{max}$は可変抵抗の抵抗値を増やした際に大幅に減少し,可変インダクタンスを増やした際にもわずかに減少していることがわかる.
+理論的には回路上の抵抗値が0であるため,実験1で$I_{max}$は発散するが,実際には有限の値を持つ.
+これはコイル,銅線の抵抗,電磁波の発生などの損失によるものだと考えられる.実際,表\ref{tab:saiyu}で示したように,可変抵抗の抵抗値が0であっても64 \si{\ohm}程度の抵抗があり,
+これが回路全体の抵抗であると考えられる.このことは表\ref{tab:saiyu}の実験2の抵抗値226 \si{\ohm}から64 \si{\ohm}を引くとおよそ150 \si{\ohm}になることからも正しいと考えられる.
+またインダクタンスを増やした際に$I_{max}$が減少したことは,コイルを直列に接続したことにより抵抗値が増加したからだと考えられる.
+表\ref{tab:saiyu}から,実験3での抵抗は260 \si{\ohm}程度であり,これから可変抵抗分の150 \si{\ohm}を引くとおよそ110 \si{\ohm}である.
+これが全てコイルの寄与であるならば,インダクタンスが1.5倍になったのに対して抵抗も1.7倍程度の増加であり,辻褄があう.
+\subsection{$f$-$V_R$, $V_L$, $V_C$グラフについて}
+\subsubsection{$f$-$V_R$グラフについて}
+Ohmの法則より,$V_R$は電流に比例することがわかる.実際,$f$-$V_R$グラフは図\ref{fig:graph1.eps}とほぼ同じ形状をしている.
+\subsubsection{$f$-$V_L$グラフについて}
+インダクタンスは一定なので,$V_L$は$L\frac{di(t)}{dt}$になる.ここで$V_L$の最大値を$V_{L0}$とする. (\ref{equ:theo_solution_for_et})式から
+\begin{align*}
+  V_{L0}&=2\pi fI_m\\
+  &=\cfrac{2\pi LfE_m}{\sqrt{R^2+\left(2\pi fL-\frac{1}{2\pi fC}\right)^2}}
+\end{align*}
+したがって$f\rightarrow0$で$V_{L0}=0$, $f\rightarrow\infty$で$V_{L0}=E_m$となる.実際,図\ref{fig:graph4_1.eps}, \ref{fig:graph5_1.eps}, \ref{fig:graph6_1.eps}では$V_{L0}$は0付近から始まり,ピークを過ぎて$E_m$に収束しているように見える.
+\subsubsection{$f$-$V_C$グラフについて}
+同様に$V_{C0}$は以下のようになる.
+\begin{align*}
+  V_{C0}&=\cfrac{I_m}{2\pi fC}\\
+  &=\cfrac{E_m}{2\pi fC\sqrt{R^2+\left(2\pi fL-\frac{1}{2\pi fC}\right)^2}}\\
+  &=\cfrac{E_m}{2\pi C\sqrt{(Rf)^2+\left(2\pi f^2L-\frac{f}{2\pi C}\right)^2}}
+\end{align*}
+したがって$f\rightarrow0$で$V_{C0}=E_m$, $f\rightarrow\infty$で$V_{C0}=0$となる.
+実際,図\ref{fig:graph4_2.eps}, \ref{fig:graph5_2.eps}, \ref{fig:graph6_2.eps}では$V_{C0}$は$E_m$付近から始まり,ピークを過ぎて0に収束しているように見える.
+\subsection{消費電力について}
+消費電力$P$は(\ref{equ:theo_solution_for_et})式から,
+\begin{align*}
+  %\label{equ:con_P}
+  \begin{split}
+    P&=E_m\sin\omega t\cdot I_m\sin(\omega t+\phi)\\
+    &=\sqrt{R^2\left(\omega L-\cfrac{1}{\omega C}\right)^2}I_m^2\sin(\omega t+\phi+\theta)\cdot\sin(\omega t+\phi)\\
+    &=\sqrt{R^2\left(\omega L-\cfrac{1}{\omega C}\right)^2}I_m^2(\sin\theta-\sin(2\omega t+2\phi+\theta))
+  \end{split}
+\end{align*}
+ここで電力の平均$\overline{P}$を取ると,$0\leq t\leq \frac{\pi}{\omega}$での積分で$sin(2\omega t+2\phi+\theta)=0$なので,
+\begin{align*}
+  %\label{equ:con_Pbar}
+  \overline{P}=\sqrt{R^2\left(\omega L-\cfrac{1}{\omega C}\right)^2}I_m^2\sin\theta
+\end{align*}
+ここで(\ref{equ:theo_Em})式, (\ref{equ:theo_theta})式を用いて以下を得る.
+\begin{align*}
+  \overline{P}&=\cfrac{E_m^2}{\sqrt{R^2\left(\omega L-\frac{1}{\omega C}\right)^2}}\sin\theta\\
+  &=\cfrac{E_m^2}{R\sqrt{1+\tan^2\theta}}\sin\theta\\
+  &=\cfrac{E_m^2}{2R}\sin 2\theta
+\end{align*}
+このことから電力は$θ$に対して正弦波で変化するとわかる.
+図\ref{fig:graph2.eps}より,実験1で$\theta$の変化は急激であり,$\theta=0,\ \pm\frac{\pi}{2}$とすると,全周波数で$\overline{P}=0$である.
+一方,実験2, 3で$\theta$の変化は比較的滑らかであり, $\theta:-\frac{\pi}{2}\rightarrow-\frac{\pi}{4}$, $\theta:\frac{\pi}{4}\rightarrow\frac{\pi}{2}$で単調減少, $\theta:-\frac{\pi}{4}\rightarrow\frac{\pi}{4}$で単調増加である.
+\subsection{Q値について}
+\subsubsection{実験値と理論値の比較}
+まず,実験値によるQ値を調べる.ここでは表\ref{tab:saiyu}に示したパラメータを(\ref{equ:theo_Em})式に代入し,これが最大値の$\frac{1}{\sqrt{2}}$となる$f_1$, $f_2$を計算機で求める.
+その結果を表\ref{tab:f1f2Q1}に示す.
+\begin{table}[htbp]
+   \caption{$f_1$, $f_2$とQ値(実験値)}
+   \label{tab:f1f2Q1}
+   \centering
+   \begin{tabular}{c|ccc}
+     \hline
+     実験&$f_1$&$f_2$&Q\\
+     \hline \hline
+     1&3.96&4.15&21.5\\
+     2&3.73&4.40&6.04\\
+     3&3.05&3.57&6.35\\
+     \hline
+   \end{tabular}
+\end{table}\\
+一方でQ値の理論値は(\ref{equ:theo_Q_1})式から求まる.その結果を表\ref{tab:f1f2Q2}に示す.
+\begin{table}[htbp]
+  \caption{$f_1$, $f_2$とQ値(理論値)}
+  \label{tab:f1f2Q2}
+  \centering
+  \begin{tabular}{c|c}
+    \hline
+    実験&Q\\
+    \hline \hline
+    1&$\infty$\\
+    2&8.19\\
+    3&10.0\\
+    \hline
+  \end{tabular}
+\end{table}\\
+これらの結果から各実験において(特に実験1)で理論値との間に顕著な差が表れていることがわかる.
+この差は理論値が回路の抵抗を全く考慮していないことが原因であると考えられる.
+実際に表\ref{tab:condition}と表\ref{tab:saiyu}を見比べるとキャパシタンスやインダクタンスに比べて抵抗が装置条件と大きく異なることがわかる.
+このことから回路の共振曲線を測定することでその回路の抵抗,インダクタンス,キャパシタンスを測定できることがわかる.
+すなわち,インパルス応答により回路の特性を解析できることに対応している.
+\subsubsection{Q値の定義}
+Q値は正確には以下のように定義される.
+\begin{align*}
+  Q=\cfrac{回路に蓄えられるエネルギー}{単位時間あたりに放出するエネルギー}
+\end{align*}
+ここではエネルギーは全てインダクタに蓄えられ,エネルギーの減衰が全て抵抗で起こる場合を考える.このとき蓄えられる全エネルギー$W$は
+\begin{align*}
+  W=\cfrac{1}{2}LI^2
+\end{align*}
+ただし電流の実効値$\overline{I}=\frac{I}{\sqrt{2}}$なので,
+\begin{align*}
+  W=L{\overline{I}}^2
+\end{align*}
+また,抵抗で一周期$T_0$の間に消費するエネルギー$P$は
+\begin{align*}
+  P=R{\overline{I}^2}T_0
+\end{align*}
+したがって
+\begin{align*}
+  Q=2\pi\cfrac{W}{P}=\cfrac{\omega_0 L}{R}
+\end{align*}
+を導ける.これから$C$に関する表式も同様に導かれる.
+
+また,ある瞬間に回路が蓄える全エネルギーを$E(t)$とすると
+\begin{align*}
+  Q=-\omega_0\cfrac{E(t)}{\frac{dE(t)}{dt}}
+\end{align*}
+したがって
+\begin{align*}
+  E(t)=C_0\mathrm{e}^{-\frac{\omega_0}{Q}t}
+\end{align*}
+よって時定数$\tau$は
+\begin{align*}
+  \tau=\cfrac{Q}{\omega_0}
+\end{align*}
+となり, Q値が大きいほど長時間エネルギーを保持できる.
+\subsection{高周波音について}
+コイルあるいはコンデンサから高周波音が鳴る現象は「鳴き」として一般に知られ,スイッチング電源やマザーボードなどの電源回路で顕著に発生する.
+これは誘電体が圧電効果により印加電圧に応じて変形し,この変形による振動が音波として聞こえることに起因する.
+しかし圧電効果は水晶やセラミックなどの物質で顕著であり,紙でも知覚できるほどの鳴きが発生するかは不明である.

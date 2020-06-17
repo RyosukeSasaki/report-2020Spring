@@ -1,0 +1,49 @@
+\section{実験原理}
+\subsection{マイケルソン干渉計}
+図\ref{fig:fig1.png}にマイケルソン干渉計の構成を示す.
+単色光源Sからの光はビームスプリッタ$\mathrm{G_1}$(半透明鏡)で2つの光路(i), (ii)に分かれる.
+それぞれの光束は鏡$\mathrm{M_1}$, $\mathrm{M_2}$で反射され,再び$\mathrm{G_1}$で合成され,干渉縞を作る.
+この干渉縞を観測することで正確に光路(i), (ii)の光路長差を測定することができる.
+\mfig[width=8cm]{fig1.png}{マイケルソン干渉計の構成}
+\subsection{波長の測定}
+$\mathrm{G_1}$から$\mathrm{M_1}$, $\mathrm{M_2}$への距離を$L_1$, $L_2$とすると,
+屈折率が一定な場合,光源の波長を$\lambda$とすると中心の明暗は以下のように表せる.
+\begin{align}
+  \label{equ:the_int}
+  |2(L_1-L_2)|=\cfrac{\lambda}{2}\times
+  \begin{cases}
+    2m & (明)\\
+    2m+1 & (暗)
+  \end{cases}
+\end{align}
+ここで,$m$は整数である.したがって,中心の干渉縞が明$\rightarrow$暗$\rightarrow$明と変化したとき,光路長は$\lambda$変化している.
+よって干渉縞の明暗の変化を観測し,そのときの光路長変化を測定することで波長を測定できる.
+\subsection{屈折率の測定}
+Lorentz-Lorenzの法則によると,屈折率$n$, 単位体積あたりの分子数$N$, 気体の平均分極率$\gamma$の間に以下の関係が成り立つ.
+\begin{align}
+  \label{equ:the_LL1}
+  &\cfrac{n^2-1}{n^2+2}=\cfrac{4\pi}{3}N\gamma\\
+  \label{equ:the_Ll2}
+  &n-1=\cfrac{n^2+2}{n+1}\cdot\cfrac{4\pi}{3}N\gamma
+\end{align}
+気体が希薄なとき, $n\approx1$とすると(\ref{equ:the_Ll2})式は以下のように書ける.
+\begin{align}
+  \label{equ:the_LL_approx}
+  &n-1\approx2\pi N\gamma
+\end{align}
+さらに状態方程式$PV=nRT$,アボガドロ定数$N_A$を用いて以下のように表される.
+\begin{align}
+  \label{equ:the_LL_state}
+  \begin{split}
+  n-1&\approx2\pi \cfrac{PN_A}{RT}\gamma\\&=:\alpha P
+  \end{split}
+\end{align}
+ここで図\ref{fig:fig2.png}のように$\mathrm{G_1}$と$\mathrm{M_1}$の間に厚さ$w$の光学セルを入れる場合を考える.
+光学セル内の圧力が$P$であるとき,光路長に対する光学セル部分の寄与は$2(1+\alpha P)w$である.
+したがって,圧力を$P_1$から$P_2$に変化させたとき干渉縞の明$\rightarrow$暗$\rightarrow$明という変化が$x$回あったなら,
+\begin{align}
+  \label{equ:the_alpha}
+  2\alpha|P_1-P_2|w=x\lambda
+\end{align}
+が成り立つ.
+\mfig[width=8cm]{fig2.png}{実験装置の構成}

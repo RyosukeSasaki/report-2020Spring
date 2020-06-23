@@ -1,0 +1,47 @@
+\section{考察}
+\subsection{実験1}
+実験1において観測される光のエネルギー強度$I_n$は比例定数$k$を用いて以下の式で与えられる.\cite{rikougaku}
+\begin{align}
+  I_n=k^2\cos^2\theta=\cfrac{k^2}{2}(\cos 2\theta+1)
+\end{align}
+実際に図\ref{fig:graph1.eps},表\ref{tab:res1_saiyu}でわかるように$I_n$は$f(x)=A\cos^2(x)$でよくフィットしている.
+また,図\ref{fig:graph2.eps},表\ref{tab:res1_saiyu}でわかるように$I_n$は$\cos^2x$に比例し,その切片は0である.
+
+また,(\ref{equ:res1})式から偏光度$P_0=1$であったことから,少なくとも今回用いた電流計の分解能において,用いた偏光板は非常に理想的な偏光度を持っている.
+\subsection{実験2}
+図\ref{fig:graph8.eps}より, $\frac{\lambda}{4}$板を透過した光は$\phi=0\si{\degree}$において直線偏光になる.
+また$\phi=45\si{\degree}$においては円偏光になり,その振幅は直線偏光のときのおよそ$\frac{1}{\sqrt{2}}$倍になっている.
+このことから$\theta=0\si{\degree}$のとき, $\phi=0\si{\degree}$でエネルギー強度は最大値を取り,
+$\phi=90\si{\degree}$で$\frac{1}{\sqrt{2}}^2=\frac{1}{2}$になるとわかる.
+また$\theta=90\si{\degree}$のとき, $\phi=0\si{\degree}$でエネルギー強度は0になり,
+$\phi=90\si{\degree}$で$\frac{1}{\sqrt{2}}^2=\frac{1}{2}$になるとわかる.
+図\ref{fig:graph3.eps}では実際にそのようになっている.
+
+$\theta=90\si{\degree}$のとき,$E_{0x}$と$E_{0y}$を位相差$\delta$で合成すると以下のようになる.
+\begin{align}
+  I'=2E_0^2\cos^2\phi\sin^2\phi(1-\cos\delta)
+\end{align}
+実際に図\ref{fig:graph3.eps}のように,この関数で$I$をフィットできている.
+
+表\ref{tab:res2_saiyu}から,フィットにより得た位相差$\delta$は$1.538\pm0.012~\si{\radian}$, $1.571\pm0.047~\si{\radian}$であり,
+その平均は$1.56\pm0.03~\si{\radian}$となる.(\ref{equ:res2})式で求めた数値との相対誤差は$0.6\%$と小さく,この値は妥当である.
+
+また$1.55~\si{\radian}\approx\frac{\pi}{2}$であり, $\frac{\lambda}{4}$板は確かに$\frac{\lambda}{4}$に近い位相差を生み出している.
+\subsection{実験3}
+$\frac{\lambda}{4}$板を透過した光の$x$軸, $y$軸成分はそれぞれ
+\begin{align}
+  \label{equ:con_3_x}
+  E_{0x}&=E_0\cos\phi\\
+  \label{equ:con_3_y}
+  E_{0y}&=E_0\sin\phi
+\end{align}
+である.このことから$\phi=0\si{\degree}$では$E_{0y}=0$なので直線偏光, $\phi=45\si{\degree}$では$E_{0x}=E_{0y}$なので円偏光となる.
+また,その間では$a=E_{0x}$, $b=E_{0y}$の楕円偏光となる.実際に図\ref{fig:graph8.eps}では直線偏光が楕円偏光を経て円偏光となる様子がわかる.
+
+特に光のエネルギー強度の最大値$I_{max}$を用いて
+\begin{align}
+  E_0=\sqrt{I_{max}}=15.9
+\end{align}
+としたとき, $a$, $b$の理論曲線と実験値は図\ref{fig:graph9.eps}のようになる.
+このように実験値は理論値によく一致している.
+\mfig[width=10cm]{graph9.eps}{$a$, $b$の理論曲線と実験値}

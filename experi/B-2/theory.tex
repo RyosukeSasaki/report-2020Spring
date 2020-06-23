@@ -1,0 +1,28 @@
+\section{実験原理}
+\subsection{偏光板}
+PVAなどの鎖状炭化水素を含む透明なプラスチックにヨウ素または染料を吸着させる.\cite{yokuwakaru}
+これを一方向に延伸すると,プラスチック分子が配向するにしたがってヨウ素や染料の分子も配向する.
+これにより分子の長軸方向には電子が移動しやすく,直行する方向には電子が移動しにくくなる.
+すると,分子の長軸方向に平行な電磁波は誘起電流が発生し吸収されるが,直交する成分はほぼ吸収されずに透過する.
+この性質を用いて偏光を作り出すのが偏光板である.\cite{rikougaku}ただし光を透過する方向を透過容易軸と呼ぶ.
+\subsection{$\frac{\lambda}{4}$板}
+複屈折性を示す結晶では波面の方向により異なった屈折率を持ち,常光線の振動方向を$x$軸,異常光線の振動方向を$y$軸とする.
+また常光線,異常光線の屈折率をそれぞれを$n_o$, $n_e$とする.
+波長$\lambda$の真空中での速度が$\frac{\omega\lambda}{2\pi}$であることから,
+常光線と異常光線の伝播速度をそれぞれ$v_o$, $v_e$とすると以下が成り立つ.
+\begin{align}
+  \label{equ:theo_vo}
+  v_o&=\frac{\omega\lambda}{2\pi n_o}\\
+  \label{equ:theo_ve}
+  v_e&=\frac{\omega\lambda}{2\pi n_e}
+\end{align}
+また,異なる伝播速度の光が厚さ$d$の結晶板を通過しきった時に持つ位相差$\delta$は(\ref{equ:theo_vo})式, (\ref{equ:theo_ve})式を用いて以下のようになる.
+\begin{align}
+  \label{equ:theo_del}
+  \begin{split}
+  \delta&=\omega d\left(\cfrac{1}{v_e}-\cfrac{1}{v_o}\right)\\
+  &=\cfrac{2\pi}{\lambda}d\left(n_e-n_o\right)
+  \end{split}
+\end{align}
+光線の入射方向を結晶の光軸に合わせ,また厚さ$d$を位相差$\delta=\frac{\pi}{2}$となるように加工することで位相が$\frac{\lambda}{4}$ずれた2つの光線を取り出すことができる.
+これが$\frac{\lambda}{4}$板である.

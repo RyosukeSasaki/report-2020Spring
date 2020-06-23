@@ -1,0 +1,71 @@
+\section{実験結果}
+各実験結果の生値は付録Aに記載する.
+\subsection{実験1}
+図\ref{fig:graph1.eps}に$\theta$-$I$グラフを,図\ref{fig:graph2.eps}に$\cos^2\theta$-$I$グラフを示す.各図の最尤曲線は最小二乗法で作図した.
+そのパラメータを表\ref{tab:res1_saiyu}に示す.
+\mfig[width=10cm]{graph1.eps}{$\theta$-$I$グラフ}
+\mfig[width=10cm]{graph2.eps}{$\cos^2\theta$-$I$グラフ}
+\begin{table}[h]
+   \caption{最尤曲線のパラメータ}
+   \label{tab:res1_saiyu}
+   \centering
+   \begin{tabular}{cccc}
+     \hline
+     &関数&\multicolumn{2}{c}{パラメータ}\\
+     \hline \hline
+     図1&$f(x)=A\cos^2(x)$&\multicolumn{2}{c}{$A=263.8\pm1.1$}\\
+     図2&$f(x)=ax+b$&$a=264.2\pm1.0$&$b=9.366\times10^{-31}$\\
+     \hline
+   \end{tabular}
+\end{table}
+また表\ref{tab:app_res1}より$P_0$は以下のようになる.
+\begin{align}
+  \label{equ:res1}
+  P_0=\frac{I_{n(max)}-I_{n(min)}}{I_{n(max)}+I_{n(min)}}=\frac{260-0}{260+0}=1
+\end{align}
+\subsection{実験2}
+図\ref{fig:graph3.eps}に$\phi$-$I$グラフを示す.各図の最尤曲線は最小二乗法で作図した.
+そのパラメータを表\ref{tab:res2_saiyu}に示す.
+\mfig[width=10cm]{graph3.eps}{$\phi$-$I$グラフ($\theta=0\si{\degree},\ 90\si{\degree})$}
+\begin{table}[h]
+   \caption{最尤曲線のパラメータ}
+   \label{tab:res2_saiyu}
+   \centering
+   \begin{tabular}{cccc}
+     \hline
+     &関数&\multicolumn{2}{c}{パラメータ}\\
+     \hline \hline
+     $\theta=0\si{\degree}$&$f(x)=A^2\left(1-\sin^2 2x\sin^2 \cfrac{a}{2}\right)$&$A=16.01\pm0.03$&$a=1.538\pm0.012$\\
+     $\theta=90\si{\degree}$&$f(x)=B^2\cdot2\cos^2x\sin^2x\left(1-\cos b\right)$&$B=16.01\pm0.04$&$b=1.571\pm0.047$\\
+     \hline
+   \end{tabular}
+\end{table}
+また表\ref{tab:app_res2}より位相差$\delta$は以下のようになる.
+\begin{align}
+  \label{equ:res2}
+  \delta=2\arcsin(\sqrt{1-\cfrac{{I_{min}}'}{{I_{max}}'}})=2\arcsin(\sqrt{1-\cfrac{131}{256}})=1.55~\si{\radian}
+\end{align}
+\subsection{実験3}
+$\phi=0\si{\degree}$, $15\si{\degree}$, $30\si{\degree}$, $45\si{\degree}$における$\sqrt{I}$-$\theta$グラフを図\ref{fig:graph4.eps}から図\ref{fig:graph7.eps}に示す.
+また図\ref{fig:graph8.eps}に各$\phi$での偏光の形を示す.
+また表\ref{tab:res3_ab}に各$\phi$での長半径$a$, 短半径$b$を示す.
+\mfig[width=12cm]{graph4.eps}{$\phi=0\si{\degree}$での$\sqrt{I}$-$\theta$グラフ}
+\mfig[width=12cm]{graph5.eps}{$\phi=15\si{\degree}$での$\sqrt{I}$-$\theta$グラフ}
+\mfig[width=12cm]{graph6.eps}{$\phi=30\si{\degree}$での$\sqrt{I}$-$\theta$グラフ}
+\mfig[width=12cm]{graph7.eps}{$\phi=45\si{\degree}$での$\sqrt{I}$-$\theta$グラフ}
+\mfig[width=12cm]{graph8.eps}{各$\phi$での偏光の形状}
+\begin{table}[h]
+   \caption{各$\phi$での$a$, $b$}
+   \label{tab:res3_ab}
+   \centering
+   \begin{tabular}{ccc}
+     \hline
+     $\phi$&a&b\\
+     \hline \hline
+     0 & 15.9 & 0.00 \\
+15 & 15.6 & 3.74 \\
+30 & 14.2 & 7.75 \\
+45 & 11.7 & 11.1 \\
+     \hline
+   \end{tabular}
+\end{table}

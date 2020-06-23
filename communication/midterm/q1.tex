@@ -1,0 +1,96 @@
+\section{ADC回路について}
+\subsection{ADC回路とは}
+ADC(Analog Digital Converter)回路とはアナログ信号の振幅を離散化,測定し,デジタル信号に変換する
+回路の総称である. 計算機ではデジタル情報のみを取り扱うことができるので,アナログ信号を計算機で取り扱う際, ADC回路を用いて情報をデジタル化しなければならない.
+
+スマートフォンなどに内蔵されるものから,宇宙用のものまで,ほとんどのセンサーは物理量を電流や電圧として測定している.
+そのためADC回路のアプリケーションは非常に多岐にわたる.
+
+連続なアナログ信号をデジタル化する際には一定の周期でサンプリングを行う.その周波数をサンプリング周波数と呼ぶ.
+
+多くの場合ADCはアナログ信号を$2^n$階調に離散化し, $n~\si{bit}$を分解能と呼ぶ.
+また測定可能な電圧の幅を測定レンジと呼ぶ.
+例えば測定レンジが$0$-$3.3~\si{\volt}$,分解能が$10~\si{bit}$のADCが検出できる電圧の分解能は
+以下のように表される.
+\begin{align*}
+  \cfrac{3.3-0}{2^{10}}\simeq 0.00323~\si{\volt}
+\end{align*}
+また$10~\si{bit}$のデジタル値が表す値は$0$-$1023$なので,各符号が表す電圧は表\ref{tab:sign_volt}のようになる.
+表から明らかなように, ADCでの測定では量子化雑音が発生する.
+\begin{table}[htbp]
+   \caption{符号と電圧の対応}
+   \label{tab:sign_volt}
+   \centering
+   \begin{tabular}{cc}
+     \hline
+     符号&電圧 / \si{\volt}\\
+     \hline \hline
+     $(0000000000)_2=0$&0以上0.00323未満\\
+     $(0000000001)_2=1$&0.00323以上0.00645未満\\
+     \vdots&\vdots\\
+     $n$&$0.00323n$以上$0.00323(n+1)$未満\\
+     \vdots&\vdots\\
+     $(1111111111)_2=1023$&3.29以上\\
+     \hline
+   \end{tabular}
+\end{table}
+\subsection{ADC回路の種類,特徴}
+ADC回路にはフラッシュ型, SAR型, $\Delta\Sigma$型などの種類がある.
+\subsubsection{フラッシュ型}
+図\ref{fig:flash.jpg}のように複数のコンパレータ(位相補償容量を除去したオペアンプ\cite{opamp})とラダー抵抗で構成される.
+電圧既知の基準電圧$V_{ref}$をラダー抵抗で分圧しコンパレータの$-$入力端子に,入力電圧$V_{in}$を$+$入力端子にそれぞれ入力する.
+$V_{in}$が基準電圧よりも大きい場合コンパレータは1を出力し,そうでなければ0を出力する.これによって信号を離散化する.
+フラッシュ型には以下のような特徴がある.
+\begin{itemize}
+  \item 動作が高速で,標本化回路が不要である
+  \item $2^n-1$個のコンパレータが必要で,消費電力が大きい
+  \item 大量のコンパレータが並列に接続されるため,キャパシタンスが大きく信号が歪む
+  \item \mfig[width=6cm]{flash.jpg}{フラッシュ型ADC\cite{rohm}}
+\end{itemize}
+%\subsubsection{パイプライン型}
+%図\ref{fig:pipe.jpg}のように標本化回路($\mathrm{S\&H}$回路)と減算器(差動増幅回路),小規模なフラッシュ型ADCとDACで構成される.以下のようなサイクルで電圧を測定する\cite{analogdevices}.
+%\begin{enumerate}
+%  \item ADCで電圧を測定する
+%  \item 1回目の測定で得た電圧をDACで再現し,標本化した信号から減算する.減算によって得られた信号は(最下位ビット)LSBより低い電圧になる
+%  \item この信号を増幅し,①,②を繰り返す
+%\end{enumerate}
+%パイプライン型には以下のような特徴がある.
+%\begin{itemize}
+%  \item サイクル数を増やすことで分解能を高くできる($16~\si{bit}$程度)
+%  \item フラッシュ型ほどではないが高速に測定可能
+%  \item パイプラインでの測定に時間が掛かり,タイムラグが発生する
+%\end{itemize}
+%\mfig[width=6cm]{pipe.jpg}{パイプライン型ADC\cite{rohm}}
+\subsubsection{逐次比較型}
+図\ref{fig:sar.jpg}のように$\mathrm{S\&H}$回路,コンパレータ, DAC,逐次比較レジスタ(SAR)で構成される.
+逐次比較レジスタはAD変換の結果を保持するレジスタである.
+コンパレータには標本化された入力信号$V_{in}$とDACの出力電圧が入力される. DACはSARに保持された値を出力する.
+まずSARの最上位ビット($\mathrm{MSB}$)に1を立てる, DACはこの値をDA変換する.
+コンパレータがDAC出力と$V_{in}$を比較し,DAC出力電圧のほうが大きければ$\mathrm{MSB}=1$,小さければ$\mathrm{MSB}=0$とする.
+同様の操作をLSBまで行い,電圧が確定する.逐次比較型には以下のような特徴がある.
+\begin{itemize}
+  \item 分解能を高くできる($18~\si{bit}$程度)
+  \item レジスタを駆動するクロックに速度が依存し,サンプリングは中程度の速度になる
+  \item 応答性が良い
+\end{itemize}
+\mfig[width=6cm]{sar.jpg}{逐次比較型ADC\cite{rohm}}
+\subsubsection{$\Delta\Sigma$型}
+図\ref{fig:sd.jpg}のように$\mathrm{S\&H}$回路,減算器,積分器,コンパレータ, DACで構成される.
+コンパレータは積分器の出力とGND電位を比較する.
+DACはコンパレータの出力に応じて$V_{ref}$または$-V_{ref}$を出力する.
+以下のようなサイクルで電圧を測定する\cite{toshiba}.
+\begin{enumerate}
+  \item 標本化された入力信号$V_{in}$からDAC出力を減算する
+  \item 減算器の出力を積分する
+  \item 積分器の出力をコンパレータでGND電位と比較し,結果を記録,DACへ入力する
+  \item 新しいDACの入力を用いて①から③を繰り返す
+\end{enumerate}
+全体として積分器の出力が0になるようなフィードバックになっており,
+コンパレータの出力の0/1の頻度から電圧を測定できる.
+$\Delta\Sigma$型は以下のような特徴がある.
+\begin{itemize}
+  \item 分解能を最も高くできる($24~\si{bit}$程度)
+  \item 回路規模が小さい
+  \item サンプリングは遅い
+\end{itemize}
+\mfig[width=6cm]{sd.jpg}{$\Delta\Sigma$型ADC}

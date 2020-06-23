@@ -1,0 +1,34 @@
+\section{身近な情報通信機器の規格}
+\subsection{TWE-LITE\textsuperscript{\textregistered}について}
+TWE-LITEは第二世代小電力データ通信システムに分類される通信モジュールであり, IoT機器向けに市販されている.
+2000円程度と安価ながら,環境次第では$1~\si{\kilo\metre}$程度の通信距離を実現できる.
+内蔵の$32~\si{bit}$ RISCプロセッサにはADCや$\mathrm{I^2C}$などのペリフェラルがあるため,単体での運用が可能である.
+TWE-LITEは物理層, MAC層においてIEEE 802.15.4に準拠し,上位層ではTWELITE NETという独自のプロトコルスタックを用いている\cite{twe-data}.
+\mfig[width=6cm]{twe.jpg}{TWE-LITEを用いた自作デバイス}
+\subsection{IEEE 802.15.4について}
+IEEE 802.15.4はIEEEによって策定された,低電力,短距離,低通信レート向けの無線通信規格である.
+暗号化や複数ノードでの通信に対応しており, IoTにおいて非常に重要な規格である.
+IEEE 802.15.4は以下のような特徴を持つ\cite{IEEE802198}.
+\begin{description}
+  \item[周波数帯]複数の周波数帯で定義される\cite{IEEEstd}. (TWE-LITEでは$2400$-$2483.5~\si{\mega\hertz}$帯を使用)
+  \item[チャンネル数]16チャンネル(各$5~\si{\mega\hertz}$占有)
+  \item[変調方式]O-QPSK(オフセット直交位相偏移変調)
+  \item[スペクトル拡散方式]DSSS(直接拡散方式)  
+  \item[伝送速度]250kbps
+  \item[消費電力]$<30~\si{\milli\ampere}$
+  \item[暗号化方式]AES-128
+  \item[トポロジー]P2P,スター型\cite{IEEEstd}
+\end{description}
+\subsection{QPSKについて\cite{ZigBee}}
+QPSKは位相が$0$, $\frac{\pi}{2}$, $\pi$, $\frac{3\pi}{2}$ $\si{rad}$異なる4つの搬送波に対してそれぞれPSK変調を行う変調方式である.
+特にO-QPSKでは$0$と$\frac{\pi}{2}$, $\pi$と$\frac{3\pi}{2}$の搬送波で変調を行うタイミングをずらしている.
+1つの搬送波が一回の変調で$1~\mathrm{symbol}$の符号を伝送するため,全体として一回の変調で$4~\mathrm{symbol}$を伝送する.
+\subsection{DSSSについて\cite{dsss}}
+DSSSとはスペクトル拡散の一である.そもそもスペクトル拡散とは,
+元のデータを伝送するのに必要な周波数帯域より遥かに大きな周波数帯域に電力を拡散して通信することであり,
+耐ノイズ性や耐妨害性,マルチパス耐性の向上が期待できる.
+
+図\ref{fig:dsss.png}のようにDSSSでは元の信号$b(t)$に,ほぼランダムでより周波数の高い拡散信号$a(t)$を乗算することで,周波数帯域を広げている.
+復調には拡散信号$a(t)$が既知である必要があるため, DSSS自体が暗号化としての機能も発揮する.
+\mfig[width=6cm]{ss.png}{スペクトラム拡散\cite{dsss}}
+\mfig[width=6cm]{dsss.png}{DSSS\cite{dsss}}

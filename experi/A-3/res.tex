@@ -1,0 +1,150 @@
+\section{結果}
+\subsection{鋼材}
+鋼材は大きな音を立てて破断し,その破断面は凹凸のある円形だった.
+\subsubsection{破断伸び,絞り}
+表\ref{tab:res_steel_pre},表\ref{tab:res_steel_nex}に試験前後の直径,標点座標,標点間距離を示す.
+両端の標点の距離$l_0=40.06~\si{\milli\metre}$, 初期断面積$A_0=50.27~\si{\milli\metre^2}$なので,破断伸び$\delta=40.24~\%$, 絞り$\phi=54.44~\%$である.
+図\ref{fig:gnuplot/graph1.eps}に試験後の直径と伸びの関係を示す.
+\begin{table}[htbp]
+  \begin{center}
+    \caption{試験前の直径,標点座標,標点間距離}
+    \label{tab:res_steel_pre}
+    \begin{tabular}{cccc}
+      \hline
+      標点番号&直径 / mm&標点座標 / mm&標点間距離 / mm\\
+      \hline \hline
+      1 & 8.00 & 50.09 & - \\
+  2 & 8.00 & 60.21 & 10.12 \\
+  3 & 8.00 & 70.25 & 10.04 \\
+  4 & 8.00 & 80.17 & 9.92 \\
+  5 & 8.00 & 90.15 & 9.98 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+\begin{table}[htbp]
+  \begin{center}
+    \caption{試験後の直径,標点座標,標点間距離}
+    \label{tab:res_steel_nex}
+  \begin{tabular}{cccc}
+    \hline
+    標点番号&直径 / mm&標点座標 / mm&標点間距離 / mm\\
+    \hline \hline
+    1 & 7.30 & 70.02 & - \\
+2 & 7.05 & 82.60 & 12.580  \\
+3 & 6.90 & 95.79 & 13.190  \\
+破面 & 5.40 & 106.00 & - \\
+4 & 6.70 & 115.00 & 19.21  \\
+5 & 7.40 & 126.20 & 11.20  \\
+    \hline
+  \end{tabular}
+\end{center}
+\end{table}
+\mfig[width=12cm]{gnuplot/graph1.eps}{試験後の直径と伸びの関係(鋼)}
+\subsubsection{ひずみ,応力}
+図\ref{fig:gnuplot/graph2.eps}に鋼材の公称応力ひずみ線図を示す.ただし,ひずみの値はストロークから算出したものである.各荷重でのストローク,ひずみ,応力などは付録の表\ref{tab:steel_data}に示す.
+\mfig[width=12cm]{gnuplot/graph2.eps}{鋼材の公称応力ひずみ線図}
+図\ref{fig:gnuplot/graph2.eps}のように(0.0068,120)付近が比例限度だとわかる.
+ヤング率$E$は比例限度までの傾きなので
+\begin{align*}
+  E=\cfrac{119.4~\si{\mega\pascal}}{6789.8\times10^{-6}}\div10^{3}=17.59~\si{\giga\pascal}
+\end{align*}
+である.
+一方,ひずみゲージの値を用いると,表\ref{tab:data_steel_2}から荷重が4000 N, 6000 Nのときの$\frac{\Delta\sigma}{\Delta\epsilon_1}$の平均を取り
+\begin{align*}
+  E=206.5~\si{\giga\pascal}
+\end{align*}
+である.
+鋼材のヤング率,上降伏点,下降伏点,引張強さ,破断強さを表\ref{tab:hagane_ryou}に示す.
+\begin{table}[htbp]
+   \caption{鋼材の諸量}
+   \label{tab:hagane_ryou}
+   \centering
+   \begin{tabular}{cc}
+     \hline
+     名称&数値\\
+     \hline \hline
+     ヤング率$E$(ストローク)&17.95 \si{\giga\pascal}\\
+     ヤング率$E$(ひずみゲージ)&206.5 \si{\giga\pascal}\\
+     上降伏点&328.3 \si{\mega\pascal}\\
+     下降伏点&234.8 \si{\mega\pascal}\\
+     引張強さ&412.6 \si{\mega\pascal}\\
+     破断強さ&252.1 \si{\mega\pascal}\\
+     \hline
+   \end{tabular}
+\end{table}\newpage
+\subsection{アルミニウム}
+アルミニウムは静かに破断し,その破断面は尖っており,円形ではなかった.
+\subsubsection{破断伸び,絞り}
+表\ref{tab:res_al_pre},表\ref{tab:res_al_nex}に試験前後の直径,標点座標,標点間距離を示す.
+両端の標点の距離$l_0=40.04~\si{\milli\metre}$,初期断面積は直径の平均を用いて$A_0=50.64~\si{\milli\metre^2}$なので,
+破断伸び$\delta=43.78~\%$,絞り$\phi=93.83\sim98.26~\%$である.図\ref{fig:gnuplot/graph3.eps}に試験後の直径と伸びの関係を示す.
+\begin{table}[htbp]
+   \caption{試験前の直径,標点座標,標点間距離}
+   \label{tab:res_al_pre}
+   \centering
+   \begin{tabular}{cccc}
+     \hline
+     標点番号&直径 / mm&標点座標 / mm&標点間距離 / mm\\
+     \hline \hline
+     1 & 8.05 & 50.13 & - \\
+2 & 8.05 & 60.20 & 10.07  \\
+3 & 8.00 & 70.19 & 9.99  \\
+4 & 8.05 & 80.23 & 10.04  \\
+5 & 8.00 & 90.17 & 9.94  \\
+     \hline
+   \end{tabular}
+\end{table}\\
+\begin{table}[htbp]
+   \caption{試験後の直径,標点座標,標点間距離}
+   \label{tab:res_al_nex}
+   \centering
+   \begin{tabular}{cccc}
+     \hline
+     標点番号&直径 / mm&標点座標 / mm&標点間距離 / mm\\
+     \hline \hline
+     1 & 7.4 & 100.08 & - \\
+2 & 7.25 & 112.26 & 12.18 \\
+3 & 7.1 & 124.88 & 12.62 \\
+破面 & 1$\sim$2 & 138.00 & - \\
+4 & 6.75 & 144.79 & 19.91 \\
+5 & 7.5 & 157.65 & 12.86 \\
+     \hline
+   \end{tabular}
+\end{table}
+\mfig[width=12cm]{gnuplot/graph3.eps}{試験後の直径と伸びの関係(アルミニウム)}
+\subsection{ひずみ,応力}
+図にアルミニウムの公称応力ひずみ線図を示す.ただし,ひずみの値はストロークから算出したものである.
+各荷重でのストローク,ひずみ応力などは表\ref{tab:al_data}に示す.
+表\ref{tab:data_al_2}から,$\frac{\Delta\sigma}{\Delta\epsilon_2}$は1000 Nを超えたあたりで減少し始めているので,
+そこを比例限度とする.よって荷重が400 N, 600 N, 800 N 1000 Nのときの$\frac{\Delta\sigma}{\Delta\epsilon_2}$の平均を取ることでヤング率$E$は
+\begin{align*}
+  E=12.97~\si{\giga\pascal}
+\end{align*}
+と求まる.一方,ひずみゲージの値を用いた場合は
+\begin{align*}
+  E=59.00~\si{\giga\pascal}
+\end{align*}
+と求まる.
+図\ref{fig:gnuplot/graph5.eps}に図\ref{fig:gnuplot/graph4.eps}の一部を拡大したグラフを示す.
+図\ref{fig:gnuplot/graph5.eps}にはオフセット法の補助線を加えてある.
+ただし,ひずみ0で有限の応力を持つことはありえないので,補正している.
+図\ref{fig:gnuplot/graph5.eps}から0.2 \%耐力は$38.02~\si{\mega\pascal}$であるとわかる.
+表\ref{tab:arumi_ryou}にアルミニウムのヤング率,0.2 \%耐力,引張強さ,破断強さを示す.
+\mfig[width=12cm]{gnuplot/graph4.eps}{アルミニウムの公称応力ひずみ線図}
+\mfig[width=12cm]{gnuplot/graph5.eps}{公称応力ひずみ線図の一部}
+\begin{table}[h]
+  \caption{アルミニウムの諸量}
+  \label{tab:arumi_ryou}
+  \centering
+  \begin{tabular}{cc}
+    名称&数値\\
+    \hline \hline
+    ヤング率$E$(ストローク)&12.97 \si{\giga\pascal}\\
+    ヤング率$E$(ひずみゲージ)&59.00 \si{\giga\pascal}\\
+    0.2 \%耐力&38.02 \si{\giga\pascal}\\
+    引張強さ&68.94 \si{\mega\pascal}\\
+    破断強さ&1.817 \si{\mega\pascal}\\
+    \hline
+   \end{tabular}
+\end{table}

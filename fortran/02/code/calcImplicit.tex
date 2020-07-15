@@ -1,0 +1,260 @@
+\begin{lstlisting}[caption=粒子数密度計算ルーチン]
+subroutine calcNumberDensity()
+  !粒子数密度の計算
+  use define
+  use consts_variables
+  implicit none
+  real*8 :: distance, weight
+  real*8 :: calcDistance, calcWeight
+  integer :: i, j
+
+  NumberDensity = 0d0
+  do i = 1, NumberOfParticle
+    if (ParticleType(i) == PARTICLE_DUMMY) cycle
+    do j = 1, NumberOfParticle
+      if (ParticleType(j) == PARTICLE_DUMMY) cycle
+      if (i == j) cycle
+      distance = calcDistance(i, j)
+      weight = calcWeight(distance, Radius_forNumberDensity)
+      NumberDensity(i) = NumberDensity(i) + weight
+    enddo
+  enddo
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=ディリクレ境界条件判定ルーチン]
+subroutine setBoundaryCondition()
+  !境界条件の設定
+  use define
+  use consts_variables
+  implicit none
+  integer :: i
+
+  !$omp parallel
+  !$omp do
+  do i = 1, NumberOfParticle
+  if (ParticleType(i) == PARTICLE_DUMMY) then
+    BoundaryCondition(i) = BOUNDARY_DUMMY
+  elseif (NumberDensity(i) < (THRESHOLD_RATIO_BETA*N0_forNumberDensity)) then
+    BoundaryCondition(i) = BOUNDARY_SURFACE
+  else
+    BoundaryCondition(i) = BOUNDARY_INNER
+  endif
+  enddo
+  !$omp end do
+  !$omp end parallel
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=ポアソン方程式右辺設定ルーチン]
+subroutine setSourceTerm()
+  !ポアソン方程式右辺の設定
+  use define
+  use consts_variables
+  implicit none
+  integer :: i
+
+  SourceTerm = 0d0
+  !$omp parallel
+  !$omp do
+  do i = 1, NumberOfParticle
+    if (ParticleType(i) == PARTICLE_DUMMY) cycle
+    if (BoundaryCondition(i) == BOUNDARY_SURFACE) cycle
+    if (BoundaryCondition(i) == BOUNDARY_INNER) then
+      SourceTerm(i) = RELAXATION_COEF_FOR_PRESSURE*(1d0/dt**2)* &
+                      (NumberDensity(i) - N0_forNumberDensity)/N0_forNumberDensity
+    endif
+  enddo
+  !$omp end do
+  !$omp end parallel
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=係数行列の計算ルーチン]
+subroutine setMatrix()
+  !係数行列の設定
+  use define
+  use consts_variables
+  implicit none
+  real*8 :: distance
+  real*8 :: calcDistance, calcWeight
+  real*8 :: coefIJ, a
+  integer :: i, j
+
+  CoefficientMatrix = 0d0
+  a = 2d0*numDimension/(N0_forLaplacian*Lambda)
+  do i = 1, NumberOfParticle
+    if (BoundaryCondition(i) .ne. BOUNDARY_INNER) cycle
+    do j = 1, NumberOfParticle
+      if (BoundaryCondition(j) == BOUNDARY_DUMMY) cycle
+      if (i == j) cycle
+      distance = calcDistance(i, j)
+      if (distance >= Radius_forLaplacian) cycle
+      coefIJ = a*calcWeight(distance, Radius_forLaplacian)/FLUID_DENSITY
+      CoefficientMatrix(i, j) = -1d0*coefIJ
+      CoefficientMatrix(i, i) = CoefficientMatrix(i, i) + coefIJ
+    enddo
+    CoefficientMatrix(i, i) = CoefficientMatrix(i, i) + COMPRESSIBILITY/(dt**2)
+  enddo
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=ガウスの消去法による圧力計算ルーチン]
+subroutine GaussEliminateMethod()
+  use define
+  use consts_variables
+  implicit none
+  real*8 :: Terms, c
+  integer :: i, j, k
+
+  Pressure = 0d0
+  do i = 1, NumberOfParticle - 1
+    if (BoundaryCondition(i) .ne. BOUNDARY_INNER) cycle
+    do j = i + 1, NumberOfParticle
+      if (BoundaryCondition(j) == BOUNDARY_DUMMY) cycle
+      c = CoefficientMatrix(j, i)/CoefficientMatrix(i, i)
+      !$omp parallel
+      !$omp do
+      do k = i + 1, NumberOfParticle
+        CoefficientMatrix(j, k) = CoefficientMatrix(j, k) - c*CoefficientMatrix(i, k)
+      enddo
+      !$omp end do
+      !$omp end parallel
+      SourceTerm(j) = SourceTerm(j) - c*SourceTerm(i)
+    enddo
+  enddo
+
+  i = NumberOfParticle
+  do
+    i = i - 1
+    if (i == 0) exit
+    if (BoundaryCondition(i) .ne. BOUNDARY_INNER) cycle
+    Terms = 0d0
+    !$omp parallel
+    !$omp do reduction(+:Terms)
+    do j = i + 1, NumberOfParticle
+      Terms = Terms + CoefficientMatrix(i, j)*Pressure(j)
+    enddo
+    !$omp end do
+    !$omp end parallel
+    Pressure(i) = (SourceTerm(i) - Terms)/CoefficientMatrix(i, i)
+  enddo
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=負圧除去ルーチン]
+subroutine removeNegativePressure()
+  !負圧の除去
+  !粒子枢密を用いて計算しているため,境界付近で負圧が発生する
+  use consts_variables
+  implicit none
+  integer ::i
+
+  !$omp parallel
+  !$omp do
+  do i = 1, NumberOfParticle
+    if (Pressure(i) < 0d0) Pressure(i) = 0d0
+    !if (Pressure(i) > 30000d0) Pressure(i) = 30000d0
+  enddo
+  !$omp end do
+  !$omp end parallel
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=近傍粒子での最小圧力設定ルーチン]
+subroutine setMinPressure()
+  !最小圧力設定ルーチン
+  !引力項による計算の発散を抑制する
+  use define
+  use consts_variables
+  implicit none
+  real*8 :: distance
+  real*8 :: calcDistance
+  integer :: i, j
+
+  do i = 1, NumberOfParticle
+    if (ParticleType(i) == PARTICLE_DUMMY) cycle
+    MinPressure(i) = Pressure(i)
+    !$omp parallel
+    !$omp do
+    do j = 1, NumberOfParticle
+      if (ParticleType(j) == PARTICLE_DUMMY) cycle
+      if (i == j) cycle
+      distance = calcDistance(i, j)
+      if (distance >= Radius_forGradient) cycle
+      if (MinPressure(i) > Pressure(j)) then
+        MinPressure(i) = Pressure(j)
+      endif
+    enddo
+    !$omp end do
+    !$omp end parallel
+  enddo
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=圧力勾配計算ルーチン]
+subroutine calcPressureGradient()
+  !圧力勾配の計算
+  use define
+  use consts_variables
+  implicit none
+  real*8 :: weight, distance, distance2
+  real*8 :: calcWeight
+  real*8 :: pIJ
+  real*8 :: deltaIJ(numDimension)
+  real*8 :: gradient(numDimension)
+  integer :: i, j, k
+
+  !$omp parallel private(gradient, distance, distance2, weight, deltaIJ, pIJ, j, k)
+  !$omp do
+  do i = 1, NumberOfParticle
+    if (ParticleType(i) .ne. PARTICLE_FLUID) cycle
+    gradient = 0d0
+    do j = 1, NumberOfParticle
+      if (i == j) cycle
+      if (ParticleType(j) == PARTICLE_DUMMY) cycle
+      distance2 = 0d0
+      do k = 1, numDimension
+        deltaIJ(k) = Pos(j, k) - Pos(i, k)
+        distance2 = distance2 + deltaIJ(k)**2
+      enddo
+      distance = sqrt(distance2)
+      if (distance < Radius_forGradient) then
+        weight = calcWeight(distance, Radius_forGradient)
+        pIJ = (Pressure(j) - MinPressure(i))/distance2
+        do k = 1, numDimension
+          gradient(k) = gradient(k) + deltaIJ(k)*pIJ*weight
+        enddo
+      endif
+    enddo
+    do k = 1, numDimension
+      gradient(k) = gradient(k)*numDimension/N0_forGradient
+      Acc(i, k) = -1d0*gradient(k)/FLUID_DENSITY
+    enddo
+  enddo
+  !$omp end do
+  !$omp end parallel
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=速度・位置計算ルーチン]
+subroutine moveParticleImplicit()
+  !陰解法による粒子の移動
+  use consts_variables
+  implicit none
+  integer :: i, j
+
+  !$omp parallel private(j)
+  !$omp do
+  do i = 1, NumberOfParticle
+  do j = 1, numDimension
+    Vel(i, j) = Vel(i, j) + Acc(i, j)*dt
+    Pos(i, j) = Pos(i, j) + Acc(i, j)*dt**2
+  enddo
+  enddo
+  !$omp end do
+  !$omp end parallel
+  Acc = 0d0
+
+end
+\end{lstlisting}

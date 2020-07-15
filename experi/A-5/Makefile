@@ -1,7 +1,7 @@
 FILES=hyousi.pdf\
 			out/main.pdf
 R=1
-NUM=4
+NUM=5
 
 connect: $(FILES)
 	pdftk $(FILES) cat output "A-$(NUM)佐々木良輔.pdf"

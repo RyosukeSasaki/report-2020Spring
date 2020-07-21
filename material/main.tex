@@ -1,0 +1,39 @@
+\documentclass[uplatex,a4j,10.5pt]{jsarticle}
+
+
+\renewcommand{\thesection}{\arabic{section}.}
+\bibliographystyle{jplain}
+
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{longtable}
+
+% 数式
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+    \includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+
+\begin{document}
+\title{物性科学　最終レポート}
+\author{61908697 佐々木良輔}
+\date{\today}
+\maketitle
+\section*{名称(総称):フロンガス}
+\input{youto.tex}
+\input{mondai.tex}
+\input{kaiketu.tex}
+\input{break.tex}
+\bibliography{ref.bib}
+\end{document}

@@ -1,0 +1,85 @@
+\section{結果・考察・課題}
+\subsection{実験1}
+図\ref{fig:e1/c1.png}に実験1の回路図を示す.
+\mfig[width=6cm]{e1/c1.png}{回路図}
+仮想接地しているため$\mathrm{A}点の電位=0$なので,キルヒホッフの法則から回路方程式は
+\begin{align}
+  \label{equ:c1}
+  &\cfrac{u(t)}{R}+C\cfrac{dy(t)}{dt}=0\\
+  y(t)&=y(0)-\cfrac{1}{RC}\int^t_0u(\tau)d\tau
+\end{align}
+したがって,入力電圧$u(t)=E_0$のとき$y(0)=0$とすると
+\begin{align}
+  \label{equ:c1_y(t)}
+  y(t)=-\cfrac{E_0}{RC}t
+\end{align}
+である.ただし$RC$の物理量は$\si{\kilo\gram.\metre^{2}.\second^{-3}.\ampere^{-2}}\cdot\si{\kilo\gram^{-1}.\metre^{-2}.\second^{4}.\ampere^{2}}=\si{\second}$なので,
+傾きは$-\cfrac{E_0}{RC}~[\si{\volt.\second^{-1}}]$とわかる.
+\subsubsection{結果}
+以下に実験1.A, 実験1.B, 実験1.Cの結果を示す.表\ref{tab:c1_inout}に各実験での入力電圧$u(t)$を示す.
+また,表\ref{tab:c1_exth}に各実験での出力電圧の傾きの実験値と理論値を示す.ただし実験値はグラフから読み取った経過時間と電位差から計算する.
+また,$f=160~\si{\hertz}$以下で三角波が台形波に変化した.
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+      \mfig[width=7cm]{e1/data1.png}{実験1.A: 入力電圧}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+      \mfig[width=7cm]{e1/data2.png}{実験1.A: 出力電圧}
+  \end{minipage} 
+\end{figure}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+      \mfig[width=7cm]{e1/data3.png}{実験1.B: 入力電圧}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+      \mfig[width=7cm]{e1/data4_.png}{実験1.B: 出力電圧}
+  \end{minipage} 
+\end{figure}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+      \mfig[width=7cm]{e1/data5.png}{実験1.C: 入力電圧}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+      \mfig[width=7cm]{e1/data6_.png}{実験1.C: 出力電圧}
+  \end{minipage} 
+\end{figure}
+\newpage
+\begin{table}[h]
+  \caption{入力電圧$u(t)$}
+  \label{tab:c1_inout}
+  \centering
+  \begin{tabular}{ccc}
+    \hline
+    実験&電圧$E_0$ / \si{\volt}&周波数$f_0$ / \si{\hertz}\\
+    \hline \hline
+    1.A&1.0&500\\
+    1.B&4.0&500\\
+    1.C&1.0&100\\
+    \hline
+  \end{tabular}
+\end{table}
+\begin{table}[h]
+  \caption{傾きの実験値と理論値}
+  \label{tab:c1_exth}
+  \centering
+  \begin{tabular}{ccc}
+    \hline
+    実験&傾き(実験値) / \si{\volt.\second^{-1}}&傾き(理論値) / \si{\volt.\second^{-1}}\\
+    \hline \hline
+    1.A&$\cfrac{5-(-5)~\si{\volt}}{(1.00-0.00)\times10^{-3}~\si{\second}}=1\times10^4$&$1.0\times10^4$\\
+    1.B&$\cfrac{15-(-15)~\si{\volt}}{(0.90-0.15)\times10^{-3}~\si{\second}}=4.0\times10^4$&$4.0\times10^4$\\
+    1.C&$\cfrac{0-(-13.5)~\si{\volt}}{(1.3-0.0)\times10^{-3}~\si{\second}}=1.0\times10^4$&$1.0\times10^4$\\
+    \hline
+  \end{tabular}
+\end{table}
+\subsubsection{考察}
+表\ref{tab:c1_exth}から,各実験での出力電圧の傾きは理論値と非常によく一致している.
+また,実験1.B,実験1.Cで三角波が台形波になったのは,オペアンプの出力電圧$y(t)\in[-V_{cc},V_{cc}]$となるからである.
+実際図\ref{fig:e1/data4_.png},図\ref{fig:e1/data6_.png}では$-V_{cc},V_{cc}$付近で傾きが減少あるいは無くなっている.
+また$E_0=1~\si{\volt}$のとき三角波が台形波に変化しない限界の周期$T_c$とその時の周波数$f_c$は
+\begin{align}
+  &\cfrac{E_0}{RC}\times\cfrac{T_c}{4}=V_{cc}\\
+  T_c&=6.0\times10^5~\si{\second}\\
+  f_c=\cfrac{1}{T_c}&=166.7~\si{\hertz}
+\end{align}
+となる.実験値との誤差は$4.0~\%$であり,よく一致している.

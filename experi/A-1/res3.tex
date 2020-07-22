@@ -1,1 +1,30 @@
 \subsection{追加実験}
+図\ref{fig:e3/c3.png}に追加実験の回路図を示す.
+\mfig[width=6cm]{e3/c3.png}{回路図}
+\subsubsection{結果}
+図\ref{fig:e3/graph1.eps}に追加実験のボード線図を示す.
+表\ref{tab:e3_outou}に周波数応答を示す.
+\begin{table}[h]
+  \caption{周波数応答}
+  \label{tab:e3_outou}
+  \centering
+  \begin{tabular}{ccccc}
+    \hline
+    入力周波数$f$&入力電圧 / \si{\volt}&出力電圧 / \si{\volt}&ゲイン(実験値) / \si{\deci\bel}&ゲイン(理論値) / \si{\deci\bel}\\
+    \hline \hline
+    $1.00\times10^2$ & 0.702 & 0.666 & $-4.57\times10^{-1}$ & $-6.80\times10^{-2}$ \\
+    $3.00\times10^2$ & 0.700 & 0.630 & $-9.15\times10^{-1}$ & $-5.77\times10^{-1}$ \\
+    $1.00\times10^3$ & 0.700 & 0.420 & $-4.44\times10^{0}$ & $-4.11\times10^{0}$ \\
+    $1.50\times10^3$ & 0.700 & 0.318 & $-6.85\times10^{0}$ & $-6.58\times10^{0}$ \\
+    $2.00\times10^3$ & 0.698 & 0.256 & $-8.71\times10^{0}$ & $-8.64\times10^{0}$ \\
+    $2.50\times10^3$ & 0.696 & 0.210 & $-1.04\times10^{1}$ & $-1.04\times10^{1}$ \\
+    $3.00\times10^3$ & 0.698 & 0.179 & $-1.18\times10^{1}$ & $-1.18\times10^{1}$ \\
+    $1.00\times10^4$ & 0.692 & 0.056 & $-2.18\times10^{1}$ & $-2.20\times10^{1}$ \\
+    $3.00\times10^4$ & 0.698 & 0.019 & $-3.13\times10^{1}$ & $-3.15\times10^{1}$ \\
+    $1.00\times10^5$ & 0.700 & 0.006 & $-4.13\times10^{1}$ & $-4.20\times10^{1}$ \\
+    \hline
+  \end{tabular}
+\end{table}
+\mfig[width=12cm]{e3/graph1.eps}{ボード線図(理論値と実験値)}
+\subsubsection{考察}
+図\ref{fig:e3/graph1.eps}のように,ゲインは理論値と実験値でよく一致している.

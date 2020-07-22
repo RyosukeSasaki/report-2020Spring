@@ -1,0 +1,60 @@
+\subsection{課題1}
+積分器の回路方程式において$u(t)=A\sin{\omega t}$, $y(t)=\mathrm{e}^{i(\omega t+\delta)}$とすると
+\begin{align}
+  \cfrac{dy(t)}{dt}&=-\cfrac{1}{RC}u(t)\\
+  i\omega A\mathrm{e}^{i(\omega t+\delta)}&=-\cfrac{E}{RC}\mathrm{e}^{i(\omega t -\pi/2)}\\
+  A\mathrm{e}^{i(\omega t+\delta)}&=-\cfrac{E}{RC\omega}\mathrm{e}^{i(\omega t -\pi)}\\
+  \therefore~A&=\cfrac{E}{RC\omega}=\cfrac{E}{RC(2\pi f)}
+\end{align}
+以上から周波数応答は
+\begin{align}
+  H(f)=20\log_{10}\cfrac{1}{RC(2\pi f)}
+\end{align}
+となる.図\ref{fig:que/graph1.eps}にボード線図の理論曲線を示す.ただし$R=10~\si{\kilo\ohm}$, $C=0.01~\si{\micro\farad}$とした.図\ref{fig:que/graph1.eps}から,積分器の周波数特性は線形であるとわかる.
+\mfig[width=12cm]{que/graph1.eps}{ボード線図}
+\subsection{課題2}
+図\ref{fig:que/que2.png}に微分器の回路図を示す.
+微分器の回路方程式は
+\begin{align}
+  \cfrac{y(t)}{R}&=-C\cfrac{du(t)}{dt}\\
+  y(t)&=-RC\cfrac{du(t)}{dt}
+\end{align}
+であり,確かに入力の微分が出力されている.
+また$u(t)=E\sin\omega t$とすると
+\begin{align}
+  y(t)&=-RC\cfrac{d}{dt}E\sin\omega t\\
+  &=-RCE\omega\sin(\omega t-\cfrac{\pi}{2})\\
+  \therefore~A&=RCE\omega=RCE(2\pi f)
+\end{align}
+したがって,微分器の周波数応答は周波数に比例してゲインが大きくなる.微分機のボード線図は図\ref{fig:que/graph2.eps}のようになる.
+微分器のボード線図と積分器のボード線図は$R$と$C$が等しいとき$y=0$に対して線対称である.
+\mfig[width=6cm]{que/que2.png}{回路図}
+\mfig[width=12cm]{que/graph2.eps}{積分器と微分器のボード線図}
+\subsection{課題3}
+表\ref{tab:jouken}に理論曲線の条件を示す.
+また図\ref{fig:que/graph3.eps}に各条件でのボード線図を示す.
+図\ref{fig:que/graph3.eps}から,$R$と$r$が異なるとき,定常ゲインが異なることがわかる.
+また$r$が異なっていても$R$が等しければ同じ直線に漸近することがわかる.このことは
+\begin{align}
+  G(f)&=20\log_{10}\cfrac{r/R}{\sqrt{1+(2\pi frC)^2}}\\
+  &=20\log_{10}\cfrac{1}{R\sqrt{\cfrac{1}{r^2}+(2\pi fC)^2}}\\
+  &=20\log_{10}\cfrac{1}{Rf\sqrt{\cfrac{1}{r^2f^2}+(2\pi C)^2}}\\
+  &\rightarrow20\log_{10}\cfrac{1}{2\pi RfC}
+\end{align}
+となることからも明らかである.
+\begin{table}[h]
+  \caption{各場合の条件}
+  \label{tab:jouken}
+  \centering
+  \begin{tabular}{ccc}
+    \hline
+    場合&$R$ / \si{\kilo\ohm}&$r$ / \si{\kilo\ohm}\\
+    \hline \hline
+    1&10&20\\
+    2&20&10\\
+    実験2&10&10\\
+    追加実験&20&20\\
+    \hline
+  \end{tabular}
+\end{table}
+\mfig[width=12cm]{que/graph3.eps}{各条件でのボード線図(理論値)}

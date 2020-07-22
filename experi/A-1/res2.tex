@@ -8,7 +8,7 @@
 \begin{align}
   rC\cfrac{dy(t)}{dt}+y(t)=-\cfrac{r}{R}E\sin\omega t
 \end{align}
-ここで$\sin\omega t=\mathrm{e}^{i(\omega t-\pi/2)}$とできる.また$y(t)=A\mathrm{e}^{i(\omega t+\delta)}$とすると
+ここで$\sin\omega t=\mathrm{Re}(\mathrm{e}^{i(\omega t-\pi/2)})$である.また$y(t)=A\mathrm{e}^{i(\omega t+\delta)}$とすると
 \begin{align}
   &rCi\omega A\mathrm{e}^{i(\omega t+\delta)}+A\mathrm{e}^{i(\omega t+\delta)}=-\cfrac{r}{R}E\mathrm{e}^{i(\omega t-\pi/2)}\\
   &A\mathrm{e}^{i(\omega t+\delta)}=-\cfrac{r/R}{1+i\omega rC}E\mathrm{e}^{i(\omega t-\pi/2)}\\
@@ -22,7 +22,7 @@
 \subsubsection{結果}
 図\ref{fig:e2/graph1.eps}に実験2のボード線図を示す.
 表\ref{tab:e2_outou}に周波数応答を示す.
-\mfig[width=14cm]{e2/graph1.eps}{ボード線図}
+\mfig[width=12cm]{e2/graph1.eps}{ボード線図}
 \begin{table}[h]
   \caption{周波数応答}
   \label{tab:e2_outou}
@@ -71,4 +71,4 @@
     \hline
   \end{tabular}
 \end{table}
-\mfig[width=14cm]{e2/graph2.eps}{ボード線図(理論値と実験値)}
+\mfig[width=12cm]{e2/graph2.eps}{ボード線図(理論値と実験値)}

@@ -1,0 +1,20 @@
+\section{課題2}
+\subsection{符号分割多重\cite{4D69637228:online}}
+\mfig[width=12cm]{CDM.png}{符号分割多重}
+符号分割多重とは多重化の方式の一つであり,スペクトラム拡散の応用である.
+図\ref{fig:CDM.png}に示すようにあるNRZ符号化されたデータに対し,
+ある符号を乗算し信号を拡散する.この符号をCDM符号とよび,符号の長さをチップと表す.
+複数の通信ごとに直交したCDM符号を割り当て,各通信ごとの拡散された信号を加算して送信する.
+CDM符号同士が直交しているため,
+受信者側は自分に割り当てられたCDM符号と受信信号の内積を取ることで目的のデータを取り出せる.
+スペクトラム拡散と同じように周波数ホッピング(図\ref{fig:hop.png})と直接拡散(図\ref{fig:direct.png})方式があり,
+それぞれでCDM符号はホッピングパターンと拡散符号に相当する.
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+      \mfig[width=7cm]{hop.png}{周波数ホッピング方式}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+      \mfig[width=7cm]{direct.png}{直接拡散方式}
+  \end{minipage} 
+\end{figure}
+\newpage

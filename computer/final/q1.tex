@@ -1,0 +1,61 @@
+\section{課題1}
+以下の論理関数$F$, $G$, $H$について真理値表を作成せよ.
+\begin{itemize}
+  \item $F=(A+B)\cdot\overline{C}$
+  \item $G=A+B\cdot\overline{C}$
+  \item $H=\overline{(A+B)}\cdot C$
+\end{itemize}
+以下に$F$, $G$, $H$の真理値表を示す.
+\begin{table}[h]
+\caption{$F$の真理値表}
+\centering
+\begin{tabular}{cccccccc}
+\hline
+$A$&$B$&$C$&$A+B$&$\overline{C}$&$F$\\
+\hline \hline
+0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 & 1 & 1 \\
+0 & 1 & 1 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 1 & 1 \\
+1 & 0 & 1 & 1 & 0 & 0 \\
+1 & 1 & 0 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\caption{$G$の真理値表}
+\centering
+\begin{tabular}{cccccc}
+\hline
+$A$&$B$&$C$&$\overline{C}$&$B\cdot\overline{C}$&$G$\\
+\hline \hline
+0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 & 1 & 1 \\
+0 & 1 & 1 & 0 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 0 & 0 & 1 \\
+1 & 1 & 0 & 1 & 1 & 1 \\
+1 & 1 & 1 & 0 & 0 & 1 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\caption{$H$の真理値表}
+\centering
+\begin{tabular}{cccccc}
+\hline
+$A$&$B$&$C$&$A+B$&$\overline{A+B}$&$H$\\
+\hline \hline
+0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 & 0 & 0 \\
+0 & 1 & 1 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 & 0 \\
+1 & 0 & 1 & 1 & 0 & 0 \\
+1 & 1 & 0 & 1 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}

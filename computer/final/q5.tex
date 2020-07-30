@@ -1,0 +1,37 @@
+\section{課題5}
+図\ref{fig:q5.png}のようにNORゲートにA, Bと,その入力にY, Y', X, X'と名前をつける.
+YとXはACTIVE HIGHとする.
+
+まずYを1にすることを考える.
+Yが1になるとAの出力Qは0になり, X'も0になる.
+このときXが0であるのでBの出力$\mathrm{\overline{Q}}$は1になる.
+したがってY'は1になり, 出力Qは0のままである.
+以上から入力YはRESET信号に相当する.
+
+次にXを1にすることを考える.
+Xが1になるとBの出力$\mathrm{\overline{Q}}$は0になり, Y'も0になる.
+このときYが0であるのでAの出力Qは1になる.
+したがってX'は1になり,出力$\mathrm{\overline{Q}}$は0のままである.
+以上から入力XはSET信号に相当する.
+
+またYとXはACTIVE HIGHなので両方がLOWのとき状態は変化しない.
+そしてYとXが両方HIGHのとき,出力Qと$\mathrm{\overline{Q}}$は同時に0になるのでこれは禁止状態である.
+以上からこの回路の動作は表\ref{tab:q5}のようになる.
+また図\ref{fig:q5_wave.png}にX, Yの入力に対する出力Qの波形を示す.
+\mfig[width=4cm]{q5.png}{回路図}
+\begin{table}[h]
+\caption{回路の動作}
+\label{tab:q5}
+\centering
+\begin{tabular}{cccc}
+\hline
+X&Y&Q&$\mathrm{\overline{Q}}$\\
+\hline \hline
+L&H&\multicolumn{2}{c}{リセット}\\
+H&L&\multicolumn{2}{c}{セット}\\
+H&H&\multicolumn{2}{c}{禁止状態}\\
+L&L&\multicolumn{2}{c}{前の状態}\\
+\hline
+\end{tabular}
+\end{table}
+\mfig[width=12cm]{q5_wave.png}{入力波形と出力波形}

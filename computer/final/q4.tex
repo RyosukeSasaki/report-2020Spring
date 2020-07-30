@@ -1,0 +1,77 @@
+\section{課題4}
+以下の機能を持つ論理関数$F$, $G$の論理式を示せ.
+\begin{description}
+  \item[論理関数$F$]\mbox{}\\4本の信号線$x_3$, $x_2$, $x_1$, $x_0$を用いて0から15の2進数を表し,
+10以上なら$F=1$,それ以外で$F=0$とする.
+  \item[論理関数$G$]\mbox{}\\上の2進数が6以下なら$G=1$,それ以外で$G=0$とする.
+\end{description}
+\subsection{$F$について}
+$F$の真理値表を表\ref{tab:q4_f}に示す.したがってカルノー図は図\ref{fig:q4_f.png}のようになる.
+ここで赤いループは$x_3x_1$,青いループは$x_3x_2$なので
+\begin{align*}
+  F(x_3,x_2,x_1,x_0)=x_3x_1+x_3x_2
+\end{align*}
+となる.
+\begin{table}[h]
+\caption{$F$の真理値表}
+\label{tab:q4_f}
+\centering
+\begin{tabular}{cccccc}
+\hline
+$x_3$&$x_2$&$x_1$&$x_0$&表す整数&$F$\\
+\hline \hline
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 0 & 2 & 0 \\
+0 & 0 & 1 & 1 & 3 & 0 \\
+0 & 1 & 0 & 0 & 4 & 0 \\
+0 & 1 & 0 & 1 & 5 & 0 \\
+0 & 1 & 1 & 0 & 6 & 0 \\
+0 & 1 & 1 & 1 & 7 & 0 \\
+1 & 0 & 0 & 0 & 8 & 0 \\
+1 & 0 & 0 & 1 & 9 & 0 \\
+1 & 0 & 1 & 0 & 10 & 1 \\
+1 & 0 & 1 & 1 & 11 & 1 \\
+1 & 1 & 0 & 0 & 12 & 1 \\
+1 & 1 & 0 & 1 & 13 & 1 \\
+1 & 1 & 1 & 0 & 14 & 1 \\
+1 & 1 & 1 & 1 & 15 & 1 \\
+\hline
+\end{tabular}
+\end{table}
+\mfig[width=4cm]{q4_f.png}{$F$のカルノー図}
+\subsection{$G$について}
+$F$の真理値表を表\ref{tab:q4_g}に示す.したがってカルノー図は図\ref{fig:q4_f.png}のようになる.
+ここで赤いループは$\overline{x_3x_1}$,青いループは$\overline{x_3x_2}$,緑のループは$\overline{x_3}x_1\overline{x_0}$なので
+\begin{align*}
+  G(x_3,x_2,x_1,x_0)=\overline{x_3x_1}+\overline{x_3x_2}+\overline{x_3}x_1\overline{x_0}
+\end{align*}
+となる.
+\begin{table}[h]
+\caption{$G$の真理値表}
+\label{tab:q4_g}
+\centering
+\begin{tabular}{cccccc}
+\hline
+$x_3$&$x_2$&$x_1$&$x_0$&表す整数&$G$\\
+\hline \hline
+0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 & 1 & 1 \\
+0 & 0 & 1 & 0 & 2 & 1 \\
+0 & 0 & 1 & 1 & 3 & 1 \\
+0 & 1 & 0 & 0 & 4 & 1 \\
+0 & 1 & 0 & 1 & 5 & 1 \\
+0 & 1 & 1 & 0 & 6 & 1 \\
+0 & 1 & 1 & 1 & 7 & 0 \\
+1 & 0 & 0 & 0 & 8 & 0 \\
+1 & 0 & 0 & 1 & 9 & 0 \\
+1 & 0 & 1 & 0 & 10 & 0 \\
+1 & 0 & 1 & 1 & 11 & 0 \\
+1 & 1 & 0 & 0 & 12 & 0 \\
+1 & 1 & 0 & 1 & 13 & 0 \\
+1 & 1 & 1 & 0 & 14 & 0 \\
+1 & 1 & 1 & 1 & 15 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+\mfig[width=4cm]{q4_g.png}{$G$のカルノー図}

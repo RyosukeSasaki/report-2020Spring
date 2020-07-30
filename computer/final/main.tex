@@ -1,0 +1,39 @@
+\documentclass[uplatex,a4j,11pt]{jsarticle}
+
+
+\renewcommand{\thesection}{\arabic{section}.}
+\bibliographystyle{jplain}
+
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+
+% 数式
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+    \includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+
+\begin{document}
+\title{計算機基礎期末レポート}
+\author{61908697 佐々木良輔}
+\maketitle
+\input{q1.tex}\newpage
+\input{q2.tex}
+\input{q3.tex}
+\input{q4.tex}
+\input{q5.tex}
+\bibliography{ref.bib}
+\end{document}

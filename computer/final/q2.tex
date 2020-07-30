@@ -1,0 +1,47 @@
+\section{課題2}
+以下の論理関数$F$, $G$, $H$をNANDゲートだけの式に変換せよ.
+NOTゲートはNANDゲートに書き換えなくてよい.
+\begin{itemize}
+  \item $F=\overline{A}\cdot{B}+\overline{C}\cdot(A+B)$
+  \item $G=\overline{A}\cdot{B}+C\cdot(A+\overline{B})$
+  \item $H=A\cdot\overline{B}+C\cdot(\overline{A}+B)$
+\end{itemize}
+\subsection{$F$について}
+\begin{align*}
+  F&=\overline{A}\cdot{B}+\overline{C}\cdot(A+B)\\
+  &=\overline{A}\cdot{B}+\overline{C}\cdot{A}+\overline{C}\cdot{B}\\
+\end{align*}
+両辺を2重否定し
+\begin{align*}
+  \overline{\overline{F}}&=\overline{\overline{\overline{A}\cdot{B}+\overline{C}\cdot{A}+\overline{C}\cdot{B}}}\\
+\end{align*}
+ド・モルガンの定理から
+\begin{align*}
+  \overline{\overline{F}}&=\overline{\overline{\overline{A}\cdot{B}}\cdot\overline{\overline{C}\cdot{A}}\cdot\overline{\overline{C}\cdot{B}}}
+\end{align*}
+\subsection{$G$について}
+\begin{align*}
+  G&=\overline{A}\cdot{B}+C\cdot(A+\overline{B})\\
+  &=\overline{A}\cdot{B}+C\cdot{A}+C\cdot\overline{B}\\
+\end{align*}
+両辺を2重否定し
+\begin{align*}
+  \overline{\overline{G}}&=\overline{\overline{\overline{A}\cdot{B}+C\cdot{A}+C\cdot\overline{B}}}\\
+\end{align*}
+ド・モルガンの定理から
+\begin{align*}
+  \overline{\overline{G}}&=\overline{\overline{\overline{A}\cdot{B}}\cdot\overline{C\cdot{A}}\cdot\overline{C\cdot\overline{B}}}
+\end{align*}
+\subsection{$H$について}
+\begin{align*}
+  H&=A\cdot\overline{B}+C\cdot(\overline{A}+B)\\
+  &=A\cdot\overline{B}+C\cdot\overline{A}+C\cdot{B}\\
+\end{align*}
+両辺を2重否定し
+\begin{align*}
+  \overline{\overline{H}}&=\overline{\overline{A\cdot\overline{B}+C\cdot\overline{A}+C\cdot{B}}}\\
+\end{align*}
+ド・モルガンの定理から
+\begin{align*}
+  \overline{\overline{H}}&=\overline{\overline{A\cdot\overline{B}}\cdot\overline{C\cdot\overline{A}}\cdot\overline{C\cdot{B}}}
+\end{align*}

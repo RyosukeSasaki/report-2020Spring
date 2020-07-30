@@ -1,0 +1,31 @@
+\section{課題3}
+以下の論理関数$F$, $G$, $H$をカルノー図を用いて論理圧縮せよ.
+\begin{itemize}
+  \item $F(x_1,x_0)=\sum(0,2,3)$
+  \item $G(x_2,x_1,x_0)=\sum(0,2,4,5,6,7)$
+  \item $H(x_3,x_2,x_1,x_0)=\sum(0,1,2,3,4,6,8,9,10,11,12,14)$
+\end{itemize}
+\subsection{$F$について}
+カルノー図を図\ref{fig:q3_f.png}に示す.
+ここで赤いループは$\overline{x_0}$,青いループは$x_1$なので
+\begin{align*}
+  F(x_1,x_0)=\overline{x_0}+x_1
+\end{align*}
+となる.
+\mfig[width=2.4cm]{q3_f.png}{$F$のカルノー図}
+\subsection{$G$について}
+カルノー図を図\ref{fig:q3_g.png}に示す.
+ここで赤いループは$\overline{x_0}$,青いループは$x_2$なので
+\begin{align*}
+  G(x_2,x_1,x_0)=\overline{x_0}+x_2
+\end{align*}
+となる.
+\mfig[width=4cm]{q3_g.png}{$G$のカルノー図}
+\subsection{$H$について}
+カルノー図を図\ref{fig:q3_h.png}に示す.
+ここで赤いループは$\overline{x_0}$,青いループは$\overline{x_2}$なので
+\begin{align*}
+  H(x_3,x_2,x_1,x_0)=\overline{x_0}+\overline{x_2}
+\end{align*}
+となる.
+\mfig[width=4cm]{q3_h.png}{$H$のカルノー図}

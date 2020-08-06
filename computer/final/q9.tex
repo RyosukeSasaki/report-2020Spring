@@ -1,0 +1,27 @@
+\section{課題9}
+以下の機械語をMIPSアセンブリに逆アセンブルする.
+no.1の命令はopコードが0x23なのでlw命令である.
+no.2の命令はopコードが0x00, functが0x20なのでadd命令である.
+no.3の命令はopコードが0x2bなのでsw命令である.
+また0x08はt0レジスタ, 0x09はt1レジスタ, 0x12はs2レジスタである.
+よってMIPSアセンブリはソースコード\ref{src:q9_mips}のようになる.
+\begin{table}[h]
+\caption{機械語}
+\label{tab:q9_machine}
+\centering
+\begin{tabular}{c|c|c|c|c|c|c}
+\hline
+&&&&\multicolumn{3}{c}{address/immidiate}\\
+no.&op&rs&rt&rd&shamt&funct\\
+\hline \hline
+1&0x23&0x09&0x08&\multicolumn{3}{c}{0x190}\\\hline
+2&0x00&0x12&0x08&0x08&0x00&0x20\\\hline
+3&0x2b&0x09&0x08&\multicolumn{3}{c}{0x190}\\
+\hline
+\end{tabular}
+\end{table}
+\begin{lstlisting}[caption=MIPSアセンブリコード, label=src:q9_mips]
+lw $t0, 400($t1)
+add $t0, $s2, $t0
+sw $t0, 400($t1)
+\end{lstlisting}

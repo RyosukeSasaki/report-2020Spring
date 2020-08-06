@@ -1,0 +1,90 @@
+\section{課題7}
+図\ref{fig:q7.png}に内部状態を割り付けた状態遷移図を示す.
+隣接する状態のハミング距離はすべて1になっている.
+よって真理値表は表\ref{tab:q7_CN}のようになる.
+したがって$N_0$のカルノー図は図\ref{fig:q7_CN.png}のようになる.
+図\ref{fig:q7_CN.png}において赤いループは$SC_0$,青いループは$\overline{SC_1}$,緑のループは$\overline{S}C_2\overline{C_0}$なので
+\begin{align*}
+  N_0(S, C_2, C_1, C_0)=\overline{S}C_2\overline{C_0}+SC_0+\overline{SC_1}
+\end{align*}
+となる.また$L_0$真理値表を表\ref{tab:q7_l0}, $L_3$真理値表を表\ref{tab:q7_l3}に示す.
+したがって$L_0$のカルノー図は図\ref{fig:q7_l0.png}, $L_3$のカルノー図は図\ref{fig:q7_l3.png}のようになる.
+図\ref{fig:q7_l0.png}において赤いループは$SC_1C_0$なので
+\begin{align*}
+  L_0(S, C_2, C_1, C_0)=SC_1C_0
+\end{align*}
+となる.また図\ref{fig:q7_l3.png}において赤いループは$\overline{C_2}C_1C_0$なので
+\begin{align*}
+  L_3(S, C_2, C_1, C_0)=\overline{C_2}C_1C_0
+\end{align*}
+となる.
+\mfig[width=8cm]{q7.png}{状態遷移図}
+\mfig[width=4cm]{q7_CN.png}{$N_0$のカルノー図}
+\mfig[width=4cm]{q7_l0.png}{$L_0$のカルノー図}
+\mfig[width=4cm]{q7_l3.png}{$L_3$のカルノー図}
+\begin{table}[h]
+\caption{真理値表}
+\label{tab:q7_CN}
+\centering
+\begin{tabular}{c|ccc|ccc}
+\hline
+入力$S$&$C_2$&$C_1$&$C_0$&$N_2$&$N_1$&$N_0$\\
+\hline \hline
+0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0 & 1 & 1 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 & * & * & * \\
+0 & 1 & 0 & 1 & * & * & * \\
+0 & 1 & 1 & 0 & 1 & 1 & 1 \\
+0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+\hline
+1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 & 0 & 1 \\
+1 & 0 & 1 & 0 & 0 & 1 & 0 \\
+1 & 0 & 1 & 1 & 1 & 1 & 1 \\
+1 & 1 & 0 & 0 & * & * & * \\
+1 & 1 & 0 & 1 & * & * & * \\
+1 & 1 & 1 & 0 & 0 & 1 & 0 \\
+1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\caption{$L_0$の真理値表}
+\label{tab:q7_l0}
+\centering
+\begin{tabular}{ccccc}
+\hline
+入力$S$&$C_2$&$C_1$&$C_0$&$L_0$\\
+\hline \hline
+1 & 0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 0 & 1 & 1 & 1 \\
+1 & 1 & 0 & 0 & * \\
+1 & 1 & 0 & 1 & * \\
+1 & 1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 1 & 1 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\caption{$L_3$の真理値表}
+\label{tab:q7_l3}
+\centering
+\begin{tabular}{cccc}
+\hline
+$C_2$&$C_1$&$C_0$&$L_3$\\
+\hline \hline
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 1 & 1 & 1 \\
+1 & 0 & 0 & * \\
+1 & 0 & 1 & * \\
+1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 0 \\
+\hline
+\end{tabular}
+\end{table}

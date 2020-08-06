@@ -1,0 +1,40 @@
+\section{課題11}
+1台の計算機で実行すると100秒かかる計算があり,そのうち90秒に相当する部分は並列化できる.
+これを5台の計算機で並列化したとき,ベースラインより実行時間が長くならない最低の周波数とその時の消費電力を求める.
+ただし周波数と電圧は表\ref{tab:q11}の組を取る.
+まず5台すべて100\%の周波数で用いた場合,実行時間$T_5$は
+\begin{align*}
+  T_5=(100-90)+\cfrac{90}{5}=28~\si{\second}
+\end{align*}
+となる.ここで$T_5$がベースラインを超えない最低の周波数の割合$p_{th}$は
+\begin{align*}
+  100&=(100-90)+\cfrac{90}{5}\times \cfrac{1}{p_{th}}\\
+  p_{th}&=0.25
+\end{align*}
+よってベースラインを超えない最低の周波数は32\%である.
+このときの電圧は71\%である.
+したがってベースラインでの消費電力を$P_{base}$,周波数を$F_{base}$,電圧を$V_{bsae}$とすると,
+並列化したときの消費電力$P_{parallel}$は
+\begin{align*}
+  \cfrac{P_{parallel}}{P_{base}}&=5\times\cfrac{F_{base}\times0.32\times(V_{base}\times0.71)^2}{F_{base}\times{V_{base}^2}}\\
+  P_{parallel}&=0.807P_{base}
+\end{align*}
+したがってベースラインに比べて消費電力は81\%になる.
+\begin{table}[htbp]
+\caption{周波数と電圧}
+\label{tab:q11}
+\centering
+\begin{tabular}{cc}
+\hline
+周波数 / \%&電圧 / \%\\
+\hline \hline
+100&100\\
+86&98\\
+71&87\\
+57&79\\
+46&77\\
+32&71\\
+21&66\\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,39 @@
+\section{課題6}
+7セグメントLEDのLED, L2, L5, L6の真理値表を表\ref{tab:q6}に示す.
+したがってL2, L5, L6のカルノー図は図\ref{fig:q6_l2.png}から図\ref{fig:q6_l6.png}に示すとおりである.
+図\ref{fig:q6_l2.png}において赤いループは$\overline{c_0}$,青いループは$c_1$なので
+\begin{align*}
+  L2(c_2, c_1, c_0)=\overline{c_0}+c_1
+\end{align*}
+となる.また図\ref{fig:q6_l5.png}において赤いループは$c_1\overline{c_0}$,青いループは$c_2$なので
+\begin{align*}
+  L5(c_2, c_1, c_0)=c_1\overline{c_0}+c_2
+\end{align*}
+となる.また図\ref{fig:q6_l6.png}において赤いループは$c_1$,青いループは$c_0$,緑のループは$c_2$なので
+\begin{align*}
+  L6(c_2, c_1, c_0)=c_2+c_1+c_0
+\end{align*}
+となる.
+\begin{table}[h]
+\caption{L2, L5, L6の真理値表}
+\label{tab:q6}
+\centering
+\begin{tabular}{ccccccc}
+\hline
+$c_2$&$c_1$&$c_0$&目&L2&L5&L6\\
+\hline \hline
+0 & 0 & 0 & 1 & 1 & 0 & 0 \\
+0 & 0 & 1 & 2 & 0 & 0 & 1 \\
+0 & 1 & 0 & 4 & 1 & 1 & 1 \\
+0 & 1 & 1 & 3 & 1 & 0 & 1 \\
+1 & 0 & 0 & 6 & 1 & 1 & 1 \\
+1 & 0 & 1 & * & * & * & * \\
+1 & 1 & 0 & 5 & 1 & 1 & 1 \\
+1 & 1 & 1 & * & * & * & * \\
+\hline
+\end{tabular}
+\end{table}
+\newpage
+\mfig[width=4cm]{q6_l2.png}{L2のカルノー図}
+\mfig[width=4cm]{q6_l5.png}{L5のカルノー図}
+\mfig[width=4cm]{q6_l6.png}{L6のカルノー図}

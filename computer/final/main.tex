@@ -1,5 +1,24 @@
 \documentclass[uplatex,a4j,11pt]{jsarticle}
+\usepackage{listings,jlisting}
 
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
 
 \renewcommand{\thesection}{\arabic{section}.}
 \bibliographystyle{jplain}
@@ -35,5 +54,12 @@
 \input{q3.tex}
 \input{q4.tex}
 \input{q5.tex}
+\input{q6.tex}
+\input{q7.tex}\newpage
+\input{q8.tex}
+\input{q9.tex}
+\input{q10.tex}
+\input{q11.tex}\newpage
+以上.
 \bibliography{ref.bib}
 \end{document}

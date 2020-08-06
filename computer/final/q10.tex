@@ -1,0 +1,26 @@
+\section{課題10}
+ソースコード\ref{src:q10_c}のC言語コードをMIPSアセンブリに変換する.ただし変数i, k, Aはレジスタt0, s5, s6に格納される.
+この動作はiに0を代入し, iとkの大小比較, A[i]への値の格納をした後に再び大小比較することで実現できる.
+またA[i]のメモリ番地は$(\mathrm{A}のベースアドレス)+(\mathrm{i}*4)$で得られる.
+変換後のアセンブリコードをソースコード\ref{src:q10_mips}に示す.
+\begin{lstlisting}[caption=C言語コード,label=src:q10_c]
+for (i = 0; i < k; i++) A[i] = i;
+\end{lstlisting}
+\begin{lstlisting}[caption=MIPSアセンブリコード, label=src:q10_mips]
+      move $t0, $zero
+      j TEST
+LOOP: sll $t1, $t0, 2 #A[i]への値格納
+      add $t1, $t1, $s6
+      sw $t0, 0($t1)
+      addi $t0, $t0, 1
+TEST: slt $t1, $t0, $s5 #大小比較
+      bne $t1, $zero, LOOP
+
+      # i = 0;
+      # goto test;
+      # loop:
+      # A[i] = i;
+      # i++;
+      # test:
+      # if (i < k) goto loop;
+\end{lstlisting}

@@ -1,0 +1,106 @@
+\section{ソルバーについて}
+CFDソルバーには大きく分けて粒子法と格子法が存在するが,本研究では粒子法を用いる.
+粒子法とは流体を多数の粒子の集合であるとし,
+各粒子について計算を行うことで流体の動きをシミュレートする手法である.
+一方で格子法とは事前に定められた計算領域を格子状の計算点に分割し,固定された計算点において計算を行う手法である.
+格子法に比べて粒子法は,事前に解析領域を定める必要がない,飛散などの現象を再現できる,メッシュの切り方に依存しないなどの特徴がある.
+一方で粒子法は各粒子の座標を変数として取り扱うため,メモリの使用量が増加する.
+
+今回は非圧縮性流れを扱うためMPS (Moving Particle Semi-implicit) 法を用いる.\cite{ryuusi}\cite{ELEM13}
+MPS法では流体の圧力を粒子数密度を用いて表し,これを一定とするように計算することで非圧縮性を課す.
+\mfig[width=10cm]{init.eps}{検証モデル(青点:流体粒子,灰点:ダミー粒子,黒点:壁粒子)\cite{ELEM13}}
+水は非圧縮性流体とできるので, Navier-Stokes方程式は
+\begin{align}
+    \label{NSequ}8
+    \frac{\partial\bm{u}}{\partial t}+(\bm{u}\cdot\nabla)=-\cfrac{1}{\rho}\nabla p+\mu\nabla^2\bm{u}+\bm{f}
+\end{align}
+ここで$\bm{u}$は速度である.連続の式は
+\begin{align}
+    \label{cont1}
+    \cfrac{\partial\rho}{\partial t}+\rho\nabla\cdot\bm{u}=0\\
+    \label{cont2}
+    \nabla\cdot\bm{u}=0
+\end{align}
+したがって
+\begin{align}
+    \label{NSequ2}
+    \frac{\partial\bm{u}}{\partial t}=-\cfrac{1}{\rho}\nabla p+\mu\nabla^2\bm{u}+\bm{f}
+\end{align}
+と表される.
+
+MPS法では粒子間相互作用モデルを用いる.粒子間相互作用モデルでは重み係数$w$を用いて粒子間の相互作用に重みをつける.
+重み係数$w$を以下のように定義する.\cite{sibas}\cite{MPSriron}
+\begin{align}
+    w(r)=\begin{cases}
+        \cfrac{r_e}{r}-1&0\leq r\leq r_e\\
+        0&r_e<r
+    \end{cases}
+\end{align}
+$r$は粒子間の距離である.これは粒子間距離が$r_e$以下の粒子同士が相互作用することを表している.
+これを用いて粒子数密度$n_i$を以下のように定義する.
+\begin{align}
+    n_i=\sum_{i\neq j}w(|\bm{r}_i-\bm{r}_j|)
+\end{align}
+$n_i$が初期条件$n^0$と一致するようにすることで非圧縮性条件を課す.
+粒子間相互作用モデルでは各演算子を以下のように離散化する.\cite{soba}
+\begin{align}
+    \label{grad}
+    \langle\nabla f\rangle_i&=\cfrac{d}{n^0}\sum_{i\neq j}\left(\cfrac{f(\bm{x}_j)-f(\bm{x}_i)}{|\bm{x}_j-\bm{x}_i|^2}(\bm{x}_j-\bm{x}_i)w(|\bm{x}_j-\bm{x}_i|)\right)\\
+    \label{div}
+    \langle\nabla\cdot \bm{u}\rangle_i&=\cfrac{2d}{n^0}\sum_{i\neq j}\cfrac{\bm{u}\cdot(\bm{x}_j-\bm{x}_i)}{|\bm{x}_j-\bm{x}_i|^2}w(|\bm{x}_j-\bm{x}_i|)\\
+    \label{lap}
+    \begin{split}
+    \langle\nabla^2 f\rangle_i&=\cfrac{2d}{\lambda n^0}\sum_{i\neq j}\left(f(\bm{x}_j)-f(\bm{x}_i)\right)w(|\bm{x}_j-\bm{x}_i|)\\
+    where~\lambda&=\cfrac{\sum_{i\neq j}|\bm{x}_j-\bm{x}_i|^2w(|\bm{x}_j-\bm{x}_i|)}{\sum_{i\neq j}w(|\bm{x}_j-\bm{x}_i|)}
+    \end{split}
+\end{align}
+ここで$d$は空間の次元であり,今回は$d=2$である.
+
+MPS法はSemi-implicitとあるとおり,陰解法と陽解法を組み合わせて計算する.
+陽解法とは,現在のタイムステップの値をのみを用いて次のタイムステップの値を決定する手法である.
+一方では陰解法ではまず現在のタイムステップから次のベクトル場を仮に決定し,それに基づいて計算する.
+その後,条件を用いて補正するのが陰解法である.
+MPS法ではNavier-Stokes方程式の第2項(粘性項)と第3項(外力項)を陽的に解き,第1項(移流項)と連続の式を陰的に解く.
+
+(\ref{grad})から(\ref{lap})式を用いて(\ref{cont2}), (\ref{NSequ2})式の離散化をする.
+\begin{align}
+    \cfrac{\Delta \bm{u}}{\Delta t}=\left[-\cfrac{1}{\rho}\nabla p\right]^{k+1}+\left[\mu\nabla^2\bm{u}\right]^k+\left[\bm{f}\right]^k\\
+    \left[\nabla\cdot\bm{u}\right]^{k+1}=0
+\end{align}
+$[\phi]^k$は$\phi$のタイムステップ$k$時点での値を指す.移流項,連続の式は陰的に解くため$k+1$ステップである.
+$\bm{u}$を移流項,粘性項と外力項成分に分け,それぞれ$\bm{u}^*$, $\bm{u}'$とする.
+\begin{align}
+    \label{itiko}
+    \cfrac{\Delta \bm{u'}}{\Delta t}=\cfrac{\bm{u}^{k+1}-\bm{u}^*}{\Delta t}=\left[-\cfrac{1}{\rho}\nabla p\right]^{k+1}\\
+    \label{nisannko}
+    \cfrac{\Delta \bm{u^*}}{\Delta t}=\cfrac{\bm{u}^*-\bm{u}^{k+1}}{\Delta t}=\left[\mu\nabla^2\bm{u}\right]^k+\left[\bm{f}\right]^k
+\end{align}
+ここで$\bm{u}^*$は仮速度であり,移流項での補正を行っていない速度ベクトルである.
+(\ref{nisannko})式において未知数は$\bm{u}^*$のみなので,計算することができる.
+$u^*$から速度を計算した後,接近した粒子間に弾性衝突を仮定し,速度と位置を修正する.
+これを行うことで,後の圧力計算において粒子数密度が以上に高くなるのを避け,時間間隔を大きくすることができる.
+また(\ref{itiko})式に辺々$\nabla$をかけると
+\begin{align}
+    \cfrac{\langle\nabla\cdot\bm{u}\rangle^{k+1}-\langle\nabla\cdot\bm{u}\rangle^{*}}{\Delta t}=-\cfrac{1}{\rho}\langle\nabla^2p\rangle^{k+1}
+\end{align}
+ここで連続の式から$\langle\nabla\cdot\bm{u}\rangle^{k+1}=0$なので
+\begin{align}
+    \label{nabnabpr}
+    \langle\nabla^2p\rangle^{k+1}=\rho\cfrac{\langle\nabla\cdot\bm{u}\rangle^{*}}{\Delta t}
+\end{align}
+となる.つぎに(\ref{cont1})式を離散化すると
+\begin{align}
+    \cfrac{\rho^*-\rho}{\Delta t}+\rho\langle\nabla\cdot\bm{u}\rangle^*&=0\\
+    \langle\nabla\cdot\bm{u}\rangle^*&=-\cfrac{1}{\Delta t}\cfrac{\rho^*-\rho}{\rho}
+\end{align}
+ここで密度$\rho$が粒子数密度$n_i$と比例することを用いて
+\begin{align}
+    \langle\nabla\cdot\bm{u}\rangle^*\simeq-\cfrac{1}{\Delta t}\cfrac{n^*-n^0}{n^0}
+\end{align}
+これと(\ref{nabnabpr})式から
+\begin{align}
+    \label{nabnabpn}
+    \langle\nabla^2p\rangle^{k+1}=-\cfrac{\rho^0}{\Delta t^2}\cfrac{n^*-n^0}{n^0}
+\end{align}
+以上と(\ref{grad})から(\ref{lap})式を用いることで,実際に計算機上で連立方程式として圧力を計算することができる.
+よって(\ref{itiko})式, (\ref{nisannko})式が解け,タイムステップの計算が終了する.\cite{ryuusinyuumon}

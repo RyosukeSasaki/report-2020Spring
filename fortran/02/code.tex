@@ -20,19 +20,31 @@
 %ここまでソースコードの表示に関する設定
 \appendix
 \section{ソースコード}
+ソースコードは以下のレポジトリで管理されている.\\
+\url{https://github.com/RyosukeSasaki/particle-fortran}
 \begin{lstlisting}[caption=メインプログラム]
 program main
   use consts_variables
   implicit none
   integer, parameter :: interval = 10
   integer :: i, j
-  !call omp_set_num_threads(8)
+  character :: filename*128
+  character :: command*128
+  call omp_set_num_threads(8)
 
-  dt = 0.0005
+  command = 'mkdir -p ' // dir // '; rm ' // dir // '/data*'
+  call system(command) 
+
+  filename = dir // "/thrust.dat"
+
+  open (19, file=filename, status='replace')
+  write (*, *) "write data to ", dir, "/. Pressure is ", WaterPressure
+
   call InitParticles()
   call calcConsts()
+  call writeInit()
   call output(0)
-  do i = 1, 800
+  do i = 0, 240-1
   do j = 1, interval
     call calcGravity()
     call calcViscosity()
@@ -47,10 +59,14 @@ program main
     call setMinPressure()
     call calcPressureGradient()
     call moveParticleImplicit()
+    call detach(i*interval+j)
+    call output(i*interval+j)
   enddo
-  write (*, *) "Timestep: ", i*interval
-  call output(i)
+  write (*, *) "Timestep: ", (i+1)*interval
   enddo
+
+  write (19, *) "#deltaV: ", deltaV
+  close (19)
 
 end
 \end{lstlisting}

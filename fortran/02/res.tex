@@ -1,1 +1,69 @@
 \section{結果}
+表\ref{tab:res_keisan}に示した条件は固定とする.
+\begin{table}[h]
+\caption{シミュレーション条件(固定)}
+\label{tab:res_keisan}
+\centering
+\begin{tabular}{rc}
+\hline
+時間間隔$dt$&0.20 \si{\milli\second}\\
+粒子直径&0.0050 \si{\metre}\\
+シミュレート時間&0.24 \si{\second}\\
+流体密度&1000 \si{\kilo\gram.\second^{-1}}\\
+動粘性係数&$1.0\times10^{-6}$ \si{\metre^2\second}\\
+衝突係数&0.2\\
+\hline
+\end{tabular}
+\end{table}
+\subsection{シミュレーション1}
+シミュレーション1では圧力$P$を変化させる.表\ref{tab:res_sim1}にシミュレーション条件とその条件での運動量$p$を示す.
+また図\ref{fig:res/pre_raw.eps}に各条件での時間-推力グラフを,図\ref{fig:res/V_pressure.eps}に圧力$P$と運動量の関係を示す.
+また各シミュレーションの動画を\url{https://drive.google.com/drive/folders/1AdJtppHVicWeStGBtDoW90rsgOPF6qaP?usp=sharing}に添付する.
+\begin{table}[h]
+\caption{シミュレーション条件と運動量$p$}
+\label{tab:res_sim1}
+\centering
+\begin{tabular}{cccc}
+\hline
+条件&圧力$P$ / \si{\pascal}&水の量$V$ / \si{\metre^3}&運動量$p$ / \si{\newton.\second}\\
+\hline\hline
+1.1&1000&$1.0\times10^{-3}$&1.36\\
+1.2&1500&-&1.37\\
+1.3&2000&-&1.50\\
+1.4&2500&-&1.62\\
+1.5&3000&-&1.59\\
+1.6&3500&-&1.69\\
+1.7&4000&-&1.82\\
+\hline
+\end{tabular}
+\end{table}
+\mfig[width=10cm]{res/pre_raw.eps}{各条件での推力}
+\mfig[width=10cm]{res/V_pressure.eps}{圧力$P$と運動量の関係}
+\subsection{シミュレーション2}
+シミュレーション1では水の量$V$を変化させる.表\ref{tab:res_sim1}にシミュレーション条件とその条件での運動量$p$を示す.
+また図\ref{fig:res/size_raw.eps}に各条件での時間-推力グラフを,図\ref{fig:res/V_size.eps}に水の量と運動量の関係を示す.
+また各シミュレーションの動画を\url{https://drive.google.com/drive/folders/1AdJtppHVicWeStGBtDoW90rsgOPF6qaP?usp=sharing}に添付する.
+\begin{table}[h]
+\caption{シミュレーション条件と運動量$p$}
+\label{tab:res_sim2}
+\centering
+\begin{tabular}{cccc}
+\hline
+条件&圧力$P$ / \si{\pascal}&水の量$V$ / \si{\metre^3}&運動量$p$ / \si{\newton.\second}\\
+\hline \hline
+2.1&4000&$1.0\times10^{-3}$&1.83\\
+2.2&-&$1.1\times10^{-3}$&1.85\\
+2.3&-&$1.2\times10^{-3}$&2.10\\
+2.4&-&$1.3\times10^{-3}$&2.28\\
+2.5&-&$1.4\times10^{-3}$&2.56\\
+2.6&-&$1.5\times10^{-3}$&2.59\\
+2.7&-&$1.6\times10^{-3}$&2.77\\
+2.8&-&$1.7\times10^{-3}$&2.90\\
+2.9&-&$1.8\times10^{-3}$&3.10\\
+2.10&-&$1.9\times10^{-3}$&3.32\\
+2.11&-&$2.0\times10^{-3}$&3.50\\
+\hline
+\end{tabular}
+\end{table}
+\mfig[width=10cm]{res/size_raw.eps}{各条件での推力}
+\mfig[width=10cm]{res/V_size.eps}{水の量と運動量の関係}

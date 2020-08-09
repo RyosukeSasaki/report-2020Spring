@@ -1,8 +1,45 @@
 \section{プログラム評価}
+\subsection{評価手法}
 \label{sec:eval}
-CFDでは計算点の数が膨大であり,誤差を厳密に評価するのは困難である.
-したがって,プログラム・計算結果の正しさについて以下の点で検証する.
+CFDでは計算点の数が膨大であり,計算の正誤や誤差を厳密に評価するのは困難である.
+したがってプログラム,計算結果の正しさについて以下の点で検証する.
 \begin{itemize}
-  \item 粒子の大きさを変化させたとき発生する$\Delta{v}$が一定である.
-  \item 時間間隔を変化させたとき発生する$\Delta{v}$が一定である.
+  \item 粒子の大きさを変化させたとき発生する運動量$p$が一定である.
+  \item 時間間隔を変化させたとき発生する運動量$p$が一定である.
 \end{itemize}
+\subsection{評価}
+表\ref{tab:eval_case}にシミュレーション条件を示す.
+また表\ref{tab:eval_res}に粒子の大きさ,時間間隔(計算条件)を変化させたときの運動量を示す.
+表\ref{tab:eval_res}から時間間隔を変化したときの運動量$p$の標準偏差は0.09,
+粒子直径を変化させたときの運動量$p$の標準偏差は0.06となり,計算条件によらず概ね一定であると言える.
+以上からプログラムは正常に動作してると考えられる.
+\begin{table}[h]
+\caption{シミュレーション条件}
+\label{tab:eval_case}
+\centering
+\begin{tabular}{rc}
+\hline
+シミュレート時間&0.12 \si{\second}\\
+流体密度&1000 \si{\kilo\gram.\second^{-1}}\\
+動粘性係数&$1.0\times10^{-6}$ \si{\metre^2\second}\\
+圧力$P$&4000 \si{\pascal}\\
+衝突係数&0.2\\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\caption{計算条件と運動量}
+\label{tab:eval_res}
+\centering
+\begin{tabular}{ccc}
+\hline
+時間間隔$dt$ / \si{\milli\second}&粒子直径 / \si{\metre}&運動量$p$ / \si{\newton.\second}\\
+\hline \hline
+0.20&0.0050&1.66\\
+0.30&0.0050&1.83\\
+0.40&0.0050&1.69\\
+0.20&0.010&1.54\\
+0.20&0.0025&1.63\\
+\hline
+\end{tabular}
+\end{table}

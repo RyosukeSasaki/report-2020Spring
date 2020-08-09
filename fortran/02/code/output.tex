@@ -1,25 +1,76 @@
-\begin{lstlisting}[caption=ファイル出力用ルーチン]
+\begin{lstlisting}[caption=粒子データ出力用ルーチン]
 subroutine output(i)
   use consts_variables
   implicit none
   integer :: i, k
   character :: filename*128
 
-  write (filename, '("data2/data", i4.4, ".dat")') i
-  open (11, file=filename, status='replace')
+  write (filename, '("/data", i4.4, ".dat")') i
+  filename = dir // filename
+  open (11, file=filename, status='new')
   do k = 1, NumberOfParticle
     write (11, '(f6.3,X)', advance='no') Pos(k, 1)
     write (11, '(f6.3,X)', advance='no') Pos(k, 2)
     write (11, '(I2,X)', advance='no') ParticleType(k)
     write (11, '(f15.5,X)', advance='no') Pressure(k)
     if (CollisionState(k) .eqv. .true.) then
-      write (11, '(I2)', advance='no') 1
+      write (11, '(I2,X)', advance='no') 1
     else
-      write (11, '(I2)', advance='no') 0
+      write (11, '(I2,X)', advance='no') 0
     endif
     write (11, *)
   enddo
   close (11)
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=初期状態出力用ルーチン]
+subroutine writeInit()
+  use consts_variables
+  implicit none
+  character :: filename*128
+
+  filename = dir // "/init.txt"
+  open (18, file=filename, status='replace')
+  write (18, *) "dt: ", dt
+  write (18, *) "Particle radius: ", PARTICLE_DISTANCE
+  write (18, *) "Fluid density: ", FLUID_DENSITY
+  write (18, *) "Water Size: ", WsizeX, " * ", WsizeY, " * ", WsizeZ
+  write (18, *) "Pressure: ", WaterPressure
+  write (18, *) "Number of Paricle: ", NumberOfParticle
+  write (18, *) "Number of Fluid: ", NumberOfFluid
+  write (18, *) "Mass of Fluid Paricle: ", MassOfParticle
+  close (18)
+
+end
+\end{lstlisting}
+\begin{lstlisting}[caption=推力・運動量計算用ルーチン]
+subroutine detach(i)
+  use consts_variables
+  use define
+  implicit none
+  integer :: i,j
+  real*8 :: VelocitySum
+  logical :: n0
+
+  n0 = .true.
+  VelocitySum = 0d0
+  do j = 1, NumberOfParticle
+    if (ParticleType(j) .ne. PARTICLE_FLUID) cycle
+    if (Pos(j, 2) < -0.01d0) then
+      if (detachState(j) .eqv. .false.) then
+        VelocitySum = VelocitySum - Vel(j, 2)
+        detachState(j) = .true.
+        n0 = .false.
+      endif
+    endif
+  enddo
+  deltaV = deltaV + VelocitySum*MassOfParticle
+  if (n0 .eqv. .false.) then
+    write (19, '(f6.4,X)', advance='no') i*dt
+    write (19, '(f15.10,X)', advance='no') VelocitySum*MassOfParticle
+    write (19, *)
+  endif
 
 end
 \end{lstlisting}
